@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS landlord_tenant;
+DROP TABLE IF EXISTS Admin;
+DROP TABLE IF EXISTS Landlord;
+DROP TABLE IF EXISTS Tenant;
+DROP TABLE IF EXISTS Users;
+
+
+CREATE TABLE Users (
+User_id INT PRIMARY KEY NOT NULL,
+name VARCHAR (100) NOT NULL,
+password VARCHAR (100) NOT NULL
+);
+
+CREATE TABLE Admin (
+ADMIN_ID INT PRIMARY KEY NOT NULL,
+FOREIGN KEY(ADMIN_ID) REFERENCES Users(User_id));
+
+CREATE TABLE Landlord (
+landlord_ID INT PRIMARY KEY NOT NULL,
+Tenant boolean NOT NULL,
+contact INT NOT NULL,
+ic INT NOT NULL,
+carnum INT NOT NULL,
+FOREIGN KEY(landlord_ID) REFERENCES Users(User_id));
+
+CREATE TABLE Tenant (
+Tenant_id INT PRIMARY KEY NOT NULL,
+contact INT NOT NULL,
+ic INT NOT NULL,
+carnum INT NOT NULL,
+FOREIGN KEY(Tenant_id) REFERENCES Users(User_id));
+
+CREATE TABLE landlord_tenant (
+landlord_id INT NOT NULL,
+tenant_id INT NOT NULL,
+PRIMARY KEY (landlord_id,tenant_id),
+FOREIGN KEY(landlord_id) REFERENCES Landlord(landlord_ID),
+FOREIGN KEY(tenant_id) REFERENCES Tenant(Tenant_id));
