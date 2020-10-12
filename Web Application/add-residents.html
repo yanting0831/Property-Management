@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Home - Project Management System</title>
+	<link rel="stylesheet" href="style/style.css"/>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<!-- Place required backend part is fill with #-->
+	<div class="sidebar">
+		<header><img src="images/dryx-black.png" alt="dryx-logo" width="50%"></header>
+		<ul>
+			<li><a href="residents.html"><i class="fas fa-user-friends"></i>Residents</a></li>
+			<li><a href="livechat.html"><i class="fas fa-comment-dots"></i>Live Chat</a></li>
+			<li><a href="payment-log.html"><i class="fas fa-money-bill-alt"></i>Payment Log</a></li>
+			<li><a href="visitor-log.html"><i class="fas fa-address-card"></i>Visitor Log</a></li>
+			<li><a href="announcement.html"><i class="fas fa-bell"></i>Announcements</a></li>
+			<li><a href="bookings.html"><i class="fas fa-building"></i>Facility bookings</a></li>
+			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+		</ul>
+	</div>
+	
+	<div class="content">
+		<h1>Residents</h1>
+		<a id ="add-residents" href="add-residents.html" ><i class="fas fa-plus"></i>  Add Residents</a>
+		<!--<a id ="drop-residents" href="residents.html"><i class="fas fa-trash-alt"></i>  Drop Residents</a>-->
+		
+		<form action="index.html" method="post" class="mt-0 col-md-10">
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="fname">First name</label>
+					<input type="text" class="form-control" placeholder="e.g. John" required>
+				</div>
+			  
+				<div class="col-md-4 mb-4 px-4">
+					<label for="lname">Last name</label>
+					<input type="text" class="form-control" placeholder="e.g. Doe" required>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="icnumber">Identificaton No.</label>
+					<input type="text" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>		
+				</div>
+				
+				<div class="col-md-4 mb-4 px-4">
+					<label for="gender">Gender</label>
+						<div class="gender-input">							
+							<input type="radio" name="gender" value="female" class="gender">
+							<label for="female">Female</label>							
+							
+							<input type="radio" name="gender" value="male" class="gender" >
+							<label for="male">Male</label>
+						</div>	
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="cntno">Contact no.</label>
+					<input type="tel" class="form-control" placeholder="e.g. 012-3456789" required>		
+				</div>
+
+				<div class="col-md-4 mb-4 px-4">
+					<label for="email">Email</label>
+					<input type="text" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>		
+				</div>
+			</div>
+			
+			<div class="col-md-4 mb-4 px-0">
+				<label for="unitno">Unit no.</label>
+				<input type="text" class="form-control" placeholder="e.g. B-8-1" required>		
+			</div>
+
+			<div class="col-md-4 mb-4 px-0">
+				<label for="resident-type">Resident Type</label>
+				<select class="form-control" id="resident-type">
+					<option>Landlord</option>
+					<option>Tenant</option>
+				</select>
+			</div>
+				
+			<button id="done-button" type="submit" name="done"><i class="fas fa-check"></i>  Done</button>					
+		</form>
+	</div>
+</body>
+</html>
