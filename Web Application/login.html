@@ -7,6 +7,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+
 <style>
 	
 	
@@ -25,12 +26,12 @@
     </div>
 
     <!-- Login Form -->
-	<form>
+	<form action="" method="get" id="login-form" name="loginform">
 		<input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
 		<input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
 		<input type="checkbox" onclick="showPassword()">
 		<label>Show Password</label>
-		<input type="submit" class="fadeIn fourth" value="Log In">
+		<input type="submit" class="fadeIn fourth" value="Log In" id="login-button">
 	</form>
 
     <!-- Remind Passowrd -->
@@ -51,5 +52,16 @@
 	  }
 	}
 </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
+<script src="firebase.js"></script>
+<script src="auth.js"></script>	
+
 </body>
 </html>
