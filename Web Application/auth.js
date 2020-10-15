@@ -2,7 +2,7 @@
 auth.onAuthStateChanged(user => {
   if (user) {
 	  console.log(user, " logged in.");
-	  location.replace(residents.html);
+	  window.location.replace("residents.html");
   }
 });
 

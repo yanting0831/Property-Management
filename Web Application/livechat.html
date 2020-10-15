@@ -35,60 +35,8 @@
 		</div>
 		
 		<div class="chatbox">
-			  <div class="col-md-12 border-bottom">		
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
-				  <div class="text">
-					<h6>Robo Cop</h6>		
-					<p class="text-muted">Hey, you're arrested!</p>
-				  </div>
-				  <span class="time text-muted small">13:21</span>
-				</div>
-				<hr>
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
-				  <div class="text">
-					<h6>Optimus</h6>
-					<p class="text-muted">Wanna grab a beer?</p>
-				  </div>
-				  <span class="time text-muted small">00:32</span>
-				</div>
-				<hr>
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/real-terminator.png" alt="">
-				  <div class="text">
-					<h6>Skynet</h6>
-					<p class="text-muted">Seen that canned piece of s?</p>
-				  </div>
-				  <span class="time text-muted small">13:21</span>
-				</div>
-				<hr>
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/termy.jpg" alt="">
-				  <div class="text">
-					<h6>Termy</h6>
-					<p class="text-muted">Im studying spanish...</p>
-				  </div>
-				  <span class="time text-muted small">13:21</span>
-				</div>
-				<hr>
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rick.jpg" alt="">
-				  <div class="text">
-					<h6>Richard</h6>
-					<p class="text-muted">I'm not sure...</p>
-				  </div>
-				  <span class="time text-muted small">13:21</span>
-				</div>
-				<hr>
-				<div onClick="window.location='chatbox.html';" class="friend-drawer">
-				  <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-				  <div class="text">
-					<h6>Someone</h6>
-					<p class="text-muted">Hi, wanna see something?</p>
-				  </div>
-				  <span class="time text-muted small">13:21</span>
-				</div>
+			  <div class="col-md-12 border-bottom" id="livechat-resident">		
+				
 			  </div>
 		  </div>
 	</div>
@@ -143,5 +91,17 @@
 //	});
 //	})
 	</script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+<script src="firebase.js"></script>
+<script src="auth(logged in).js"></script>
+<script src="livechat_list.js"></script>
 </body>
 </html>
