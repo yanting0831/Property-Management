@@ -14,13 +14,7 @@ var user_element = "";
 //    });
 //});
 
-//onclick
-//var elements = document.getElementsByClassName ("friend-drawer");
-//for (var i=0; i < elements.length; i++) {
-//     elements[i].onclick = function() {
-//			
-//     }
-//}
+
 
 
 function chat(){
@@ -35,7 +29,7 @@ function chat(){
 		var hour = date.getUTCHours();
 		var minute = date.getMinutes();
 		
-		var user =`<div onClick="window.location='chatbox.html';" class="friend-drawer" id="user${i}" >
+		var user =`<div class="friend-drawer" id="${doc.id}" >
 				  <img id="user0img" class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
 				  <div class="text">
 					<h6>${doc.data().name}</h6>		
@@ -77,6 +71,15 @@ function chat(){
 			}).catch(function(error) {
 				console.log(error);
 			});
+		}
+	}).then(() => {
+		//setup onclick
+		var elements = document.getElementsByClassName ("friend-drawer");
+		for (var i=0; i < elements.length; i++) {
+			 elements[i].onclick = function() {
+				 localStorage.setItem("livechatid",this.id);
+				 location.replace("chatbox.html");
+			 }
 		}
 	})
 }
