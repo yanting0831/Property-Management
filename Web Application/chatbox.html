@@ -90,7 +90,7 @@ hr {
 	  <div class="col-md-8">
 		<div class="settings-tray">
 			<div class="friend-drawer no-gutters friend-drawer--grey">
-			<img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+			<img class="profile-image" id="profile-image"src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
 			<div class="text">
 			  <h6>Robo Cop</h6>
 			</div>
@@ -107,49 +107,9 @@ hr {
 		  
 		  
 		  
-		<div class="chat-panel">
-		  <div class="row no-gutters">
-			<div class="col-md-3">
-			  <div class="chat-bubble chat-bubble--left">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
-		  <div class="row no-gutters">
-			<div class="col-md-3 offset-md-9">
-			  <div class="chat-bubble chat-bubble--right">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
-		  <div class="row no-gutters">
-			<div class="col-md-3 offset-md-9">
-			  <div class="chat-bubble chat-bubble--right">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
-		  <div class="row no-gutters">
-			<div class="col-md-3">
-			  <div class="chat-bubble chat-bubble--left">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
-		  <div class="row no-gutters">
-			<div class="col-md-3">
-			  <div class="chat-bubble chat-bubble--left">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
-		  <div class="row no-gutters">
-			<div class="col-md-3">
-			  <div class="chat-bubble chat-bubble--left">
-				Hello dude!
-			  </div>
-			</div>
-		  </div>
+		<div class="chat-panel" id="chat-panel">
+		  
+		  <!--Generate chats here-->
 		  <div class="row">
 			<div class="col-12">
 			  <div class="chat-box-tray">
@@ -161,6 +121,17 @@ hr {
 		  </div>
 		</div>
 	  </div>
-	</div>	
+	</div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+<script src="firebase.js"></script>
+<script src="chatbox.js"></script>
 </body>
 </html>
