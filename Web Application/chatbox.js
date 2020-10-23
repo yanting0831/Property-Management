@@ -46,6 +46,7 @@ docref.orderBy("time","desc").limit(5)
     .onSnapshot(function(querySnapshot) {
 		var i = 0;
 		chats = "";
+		var querysize = querySnapshot.size;
 		//loop through collection
         querySnapshot.forEach(function(doc) {
 			i++;
@@ -70,7 +71,7 @@ docref.orderBy("time","desc").limit(5)
 				  </div>`+ chats;
 			}
 			
-			if(i == 5){
+			if(i == 5 || querysize < 5){
 				//insert send message box
 				chats = chats + `<div class='row'>
 						<div class='col-12'>

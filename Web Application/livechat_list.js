@@ -56,7 +56,6 @@ function chat(){
 	p1.then((url_list) => {
 	
 		var img = document.getElementsByClassName('profile-image');
-		var urls = [];
 		var d = 0;
 		for(i = 0; i < url_list.length; i++){
 			
