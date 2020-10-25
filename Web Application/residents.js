@@ -1,4 +1,4 @@
-// JavaScript Document
+
 var resident_list = document.getElementById("list");
 var list = "";
 db.collection("landlord").get().then((querySnapshot) => {
@@ -18,4 +18,10 @@ db.collection("landlord").get().then((querySnapshot) => {
     });
 	
 	resident_list.innerHTML = list;
+}).then(()=>{
+	$('#resident-list').DataTable({
+					"pagingType": "simple_numbers",
+					info: false,
+					"sDom": '<"top"i>rt<"bottom"flp><"clear">'
+				});	
 });
