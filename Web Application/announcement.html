@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -42,22 +41,26 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label"> Announcement Image </label> 
 					<div class="col-md-6"> 
-						<input name="annc_image" type="file" class="form-control" required>  
+						<input name="annc_image" type="file" class="form-control" required id="image_url">
+  
 					</div>
+					
 				</div>
-			
+				<div class="form-group" id="image_preview">
+					
+					
+				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label"></label> 
 					<div class="col-md-6">
 						<input name="post" value="Post" type="submit" class="btn btn-primary form-control"> 
 					</div>   
 				</div>
+				
 			</form>  
 		</div>  
 	</div>
 	
-	<script>
-		
-	</script>
+	<script src="announcement.js"></script>
 </body>
 </html>

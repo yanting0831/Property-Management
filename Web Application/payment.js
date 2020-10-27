@@ -4,7 +4,8 @@ var list = "";
 db.collection("payment").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 		console.log(doc.data().amount);
-		var user =`<tr><td>${doc.data().name}</td>
+		var user =`<tr>
+				<td>${doc.data().name}</td>
 				<td>${doc.data().amount}</td>
 				<td>${doc.data().facility}</td>
 				<td>${doc.data().duration}</td>
