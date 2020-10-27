@@ -43,85 +43,6 @@
 			</thead>
 			
 			<tbody id="list">
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>		
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
-				
-				<tr>
-					<td>000001</td>
-					<td>Landlord</td>
-					<td>Robert Pattinson</td>
-					<td>0123456789</td>
-					<td>B-8-1</td>
-					<td>26/9/2020</td>	
-					<td>RM 450.00</td>					
-				</tr>
 			</tbody>
 		</table>
 		
@@ -133,7 +54,7 @@
 		
 		<script>
 			$(document).ready(function() {
-				$('#payment-log').DataTable({
+				$('#payment_log').DataTable({
 					"pagingType": "simple_numbers",
 					info: false,
 					"sDom": '<"top"i>rt<"bottom"flp><"clear">'
@@ -142,5 +63,16 @@
 			} ); 
 		</script>		
 	</div>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
+<script src="firebase.js"></script>
+<script src="auth(logged in).js"></script>
+<script src="payment.js"></script>
 </body>
 </html>
