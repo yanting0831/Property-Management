@@ -9,9 +9,9 @@ if(isset($_FILES['annc_image']['name'])){
 	$fields=array(
 		"to" => "/topics/announcement",
 		"notification" => array(
-			"body" => $_REQUEST['message'],
-			"title" => $_REQUEST['title'],
-			"image": $img
+			"body" => $_REQUEST['annc_msg'],
+			"title" => $_REQUEST['annc_name'],
+			"image" => $img
 		)
 	);
 	
@@ -30,6 +30,8 @@ if(isset($_FILES['annc_image']['name'])){
 	print_r($result);
 	curl_close($ch);
 }
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -63,5 +65,3 @@ if(isset($_FILES['annc_image']['name'])){
 	</div>
 </body>
 </html>
-
-?>
