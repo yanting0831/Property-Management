@@ -27,7 +27,6 @@ if(isset($_FILES['annc_image']['name'])){
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 	curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
 	$result = curl_exec($ch);
-	print_r($result);
 	curl_close($ch);
 }
 
@@ -61,7 +60,7 @@ if(isset($_FILES['annc_image']['name'])){
 	</div>
 	
 	<div class="content">
-		
+		<p style="color:green">Announcement Sent</p>
 	</div>
 </body>
 </html>

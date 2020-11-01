@@ -15,18 +15,26 @@ $("#image_url").change(function(){
 		}
 		
 //		reader.readAsDataURL(this.files[0]); // convert to base64 string
+	}else{
+		url = "";
 	}
 });
 
 $("#annc-form").submit(function(event){
-	//event.preventDefault();
+	
 	var title = document.getElementById("form_title").value;
 	var msg = document.getElementById("form_msg").value;
 	var date = new Date();
-	console.log(title);
+	console.log(title+" "+msg);
+	if(title.trim()=="" || msg.trim() =="" || title== null||msg== null){
+	   	
+		event.preventDefault();
+		alert("title and description cannot be empty");
+	}else{
+		firebasedb(title,msg,url,date);
+	}
 	
-//	$("#annc-form").trigger('submit');
-	firebasedb(title,msg,url,date);
+	
 });
 //insert to db function
 async function firebasedb(ann_title,ann_description,ann_imageurl,ann_date){
