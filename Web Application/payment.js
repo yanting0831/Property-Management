@@ -1,7 +1,26 @@
 // JavaScript Document
-var payment_log = document.getElementById("list");
-var list = "";
+var t = $('#payment-log').DataTable({
+  "pagingType": "simple_numbers",
+  info: false,
+  "sDom": '<"top"i>rt<"bottom"flp><"clear">'
+});
+
 db.collection("payment").get().then((querySnapshot) => {
+<<<<<<< HEAD
+  querySnapshot.forEach((doc) => {
+    var user_id = doc.data().user_id;
+    var amount = doc.data().amount;
+	var status = doc.data().status;
+    db.collection("landlord").doc(user_id).get().then(function (doc) {
+      t.row.add([
+        doc.data().name,
+        doc.data().role,
+        doc.data().contact,
+        doc.data().unit,
+        amount,
+		status
+      ]).draw();
+=======
     querySnapshot.forEach((doc) => {
 		console.log(doc.data().amount);
 		var user =`<tr>
@@ -17,7 +36,8 @@ db.collection("payment").get().then((querySnapshot) => {
 		
 		list = list.concat(user);
 		
+>>>>>>> 9411845abd25502839703b160f2e0769bc0fccb6
     });
-	
-	payment_log.innerHTML = list;
+  });
+
 });
