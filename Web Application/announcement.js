@@ -40,8 +40,7 @@ $("#annc-form").submit(function(event){
 async function firebasedb(ann_title,ann_description,ann_imageurl,ann_date){
 	
 	await db.collection("announcement").add({
-//		name: "Tokyo",
-//    	country: "Japan"
+
     title: ann_title,
     description: ann_description,
 	imageurl: ann_imageurl,

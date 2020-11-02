@@ -28,6 +28,9 @@ if(isset($_FILES['annc_image']['name'])){
 	curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
 	$result = curl_exec($ch);
 	curl_close($ch);
+	
+	
+	 header( "refresh:5; url=residents.html" ); 
 }
 
 ?>
@@ -60,7 +63,7 @@ if(isset($_FILES['annc_image']['name'])){
 	</div>
 	
 	<div class="content">
-		<p style="color:green">Announcement Sent</p>
+		<h2 style="color:green">Announcement Sent</h2>
 	</div>
 </body>
 </html>
