@@ -6,7 +6,6 @@ var t = $('#payment-log').DataTable({
 });
 
 db.collection("payment").get().then((querySnapshot) => {
-<<<<<<< HEAD
   querySnapshot.forEach((doc) => {
     var user_id = doc.data().user_id;
     var amount = doc.data().amount;
@@ -20,7 +19,7 @@ db.collection("payment").get().then((querySnapshot) => {
         amount,
 		status
       ]).draw();
-=======
+
     querySnapshot.forEach((doc) => {
 		console.log(doc.data().amount);
 		var user =`<tr>
@@ -36,7 +35,6 @@ db.collection("payment").get().then((querySnapshot) => {
 		
 		list = list.concat(user);
 		
->>>>>>> 9411845abd25502839703b160f2e0769bc0fccb6
     });
   });
 
