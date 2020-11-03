@@ -174,7 +174,7 @@ ul li:hover a{
 
 /* ANIMATIONS */
 
-/* Simple CSS3 Fade-in-down Animation */
+/* Simple CSS3 Fade-in-down Animation 
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -210,7 +210,9 @@ ul li:hover a{
   }
 }
 
-/* Simple CSS3 Fade-in Animation */
+*/
+
+/* Simple CSS3 Fade-in Animation 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -254,7 +256,9 @@ ul li:hover a{
   animation-delay: 1s;
 }
 
-/* Simple CSS3 Fade-in Animation */
+*/
+
+/* Simple CSS3 Fade-in Animation 
 .underlineHover:after {
   display: block;
   left: 0;
@@ -269,6 +273,8 @@ ul li:hover a{
 .underlineHover:hover {
   color: #0d0d0d;
 }
+
+*/
 
 /* OTHERS */
 
