@@ -1,6 +1,7 @@
 // JavaScript Document
 var userid = location.search.substring(1);
 var chat_list = document.getElementById("chat-panel");
+
 var chats = "";
 var docref = db.collection("landlord").doc(userid).collection("chatroom");
 console.log(userid);
@@ -9,6 +10,9 @@ console.log(userid);
 db.collection("landlord").doc(userid).get().then(function(doc) {
 		
 	if (doc.exists) {
+		var username = document.getElementById("username");
+		username.innerHTML = `<h6>${doc.data().name}</h6>`;
+
 		var pathReference = storage.ref(doc.data().imageurl);
 			
 		pathReference.getDownloadURL().then(function(url) {

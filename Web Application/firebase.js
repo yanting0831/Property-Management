@@ -17,5 +17,5 @@
     //make auth and firestore references
 	const auth = firebase.auth();
     const db = firebase.firestore();
-    const functions = firebase.functions();// JavaScript Document
+    const functions = firebase.functions();
 	const storage = firebase.storage();

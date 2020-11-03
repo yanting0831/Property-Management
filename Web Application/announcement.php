@@ -1,8 +1,44 @@
+<?php
+$img = "";
+if(isset($_FILES['annc_image']['name'])){
+	$img = $_FILES['annc_image']['name'];
+	echo $img;
+	
+	$url = "https://fcm.googleapis.com/fcm/send";
+
+	$fields=array(
+		"to" => "/topics/announcement",
+		"notification" => array(
+			"body" => $_REQUEST['annc_msg'],
+			"title" => $_REQUEST['annc_name'],
+			"image" => $img
+		)
+	);
+	
+	$header=array(
+		'Authorization: key=AAAAZA6ZULE:APA91bH8eD1hLLglnMxc68jmu2ynNyDvnVoNRCh5MfDwQB70WZZjzHOz3iCu8A69b4P7X_YbEu2LTGn4npcE1zyHaUMWW2rhdRoGmcuBMVbQdgXRDgf-8_h0grN8wKNS3Lx_IDzzaTZR',
+		'Content-Type:application/json'
+	);
+	
+	$ch = curl_init();
+	curl_setopt($ch,CURLOPT_URL,$url);
+	curl_setopt($ch,CURLOPT_POST,true);
+	curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+	curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
+	$result = curl_exec($ch);
+	curl_close($ch);
+	
+	
+	 header( "refresh:5; url=residents.html" ); 
+}
+
+?>
 <!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Payment Log - Project Management System</title>
+	<title>Visitor Log - Project Management System</title>
 	<link rel="stylesheet" href="style/style.css"/>
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -22,46 +58,12 @@
 			<li><a href="visitor-log.html"><i class="fas fa-address-card"></i>Visitor Log</a></li>
 			<li><a href="announcement.html"><i class="fas fa-bell"></i>Announcements</a></li>
 			<li><a href="bookings.html"><i class="fas fa-building"></i>Facility bookings</a></li>
-			<li><a href="#" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 		</ul>
 	</div>
 	
 	<div class="content">
-		<h1>Payment Log</h1>
-		
-		<table id="payment-log" class="table table-bordered striped ">
-			<thead>
-				<tr>
-					<th>User Name</th>
-					<th>Resident type</th>
-					<th>Contact No.</th>
-					<th>Unit number</th>
-					<th>Amount</th>					
-					<th>status</th>
-				</tr>
-			</thead>
-			
-			<tbody id="list">
-			</tbody>
-		</table>
-		
-		<div class="pagination-container">
-			<nav>
-				<ul class="pagination"></ul>
-			</nav>
-		</div>
-			
+		<h2 style="color:green">Announcement Sent</h2>
 	</div>
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
-<script src="firebase.js"></script>
-<script src="auth(logged in).js"></script>
-<script src="payment.js"></script>
 </body>
 </html>
