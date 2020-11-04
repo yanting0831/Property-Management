@@ -62,8 +62,11 @@ if(isset($_FILES['annc_image']['name'])){
 		</ul>
 	</div>
 	
-	<div class="content">
-		<h2 style="color:green">Announcement Sent</h2>
+	<div class="content">	
+		<img src="images/success.png" alt="success-icon" style="width:5%"/>
+		<h1 class="announcement-sent">Announcement Sent</h1>
+		<h1 class="announcement-text">Your announcement was posted successfully!</h1>
+		<h1 class="redirect">Please wait, you will be redirected to homepage shortly....</h1>
 	</div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Home - Project Management System</title>
+	<title>Update Bill - Project Management System</title>
 	<link rel="stylesheet" href="style/style.css"/>
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,70 +24,47 @@
 		</ul>
 	</div>
 	
-	<div class="content">
-		<h1>Residents</h1>
-		<a id ="add-residents" href="add-residents.html" ><i class="fas fa-plus"></i>  Add Residents</a>
-		<!--<a id ="drop-residents" href="residents.html"><i class="fas fa-trash-alt"></i>  Drop Residents</a>-->
+	<div class="update-bill">
+		<h1>Update bill</h1>
 		
-		<form action="index.html" method="post" class="mt-0 col-md-10" id="add-resident-form">
+		<form id="update-bill-form" action="###" method="post" class="mt-0 col-md-10" id="update-bill-form">
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
-					<label for="fname" >First name</label>
-					<input type="text" id="fname" class="form-control" placeholder="e.g. John" required>
-				</div>
-			  
-				<div class="col-md-4 mb-4 px-4">
-					<label for="lname">Last name</label>
-					<input type="text" id="lname" class="form-control" placeholder="e.g. Doe" required>
+					<label for="price" >Price</label>
+					<input type="digit" id="price" class="form-control" placeholder="89.95" pattern="[0-9]+(\\.[0-9][0-9]?)?"required>
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
-					<label for="icnumber">Identificaton No.</label>
-					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>		
-				</div>
-				
-				<div class="col-md-4 mb-4 px-4">
-					<label for="gender">Gender</label>
-						<div class="gender-input">							
-							<input type="radio" name="gender" value="female" class="gender">
-							<label for="female">Female</label>							
-							
-							<input type="radio" name="gender" value="male" class="gender" >
-							<label for="male">Male</label>
-						</div>	
-				</div>
+					<label for="payment-desc">Payment Description</label>
+					<input type="text" id="idno" class="form-control" placeholder="September Water Bill" required>		
+				</div>				
 			</div>
 
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
-					<label for="cntno">Contact no.</label>
-					<input type="tel" id="contact" class="form-control" placeholder="e.g. 012-3456789" required>		
-				</div>
-
-				<div class="col-md-4 mb-4 px-4">
-					<label for="email">Email</label>
-					<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>		
-				</div>
+					<label for="bill-for">Bill for</label>
+					<select class="form-control" id="resident-type">
+						<optgroup label="User">
+						  <option value="landlord">Landlord</option>
+						  <option value="tenant">Tenant</option>
+						</optgroup>
+					</select>
+				</div>	
 			</div>
 			
-			<div class="col-md-4 mb-4 px-0">
-				<label for="unitno">Unit no.</label>
-				<input type="text" id="unitno" class="form-control" placeholder="e.g. B-8-1" required>		
-			</div>
-
-			<div class="col-md-4 mb-4 px-0">
-				<label for="resident-type">Resident Type</label>
-				<select class="form-control" id="resident-type">
-					<option>Landlord</option>
-					<option>Tenant</option>
-				</select>
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="bill-for">Unit No.</label>
+					<input type="text" id="idno" class="form-control" placeholder="B-8-1" required>
+				</div>	
 			</div>
 				
-			<button id="done-button" type="submit" name="done"><i class="fas fa-check"></i>  Done</button>					
+			<button action="###" id="update-button" type="submit" value="Update" name="update"><i class="fas fa-check"></i> Update</button>					
 		</form>
 	</div>
+	
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
