@@ -28,7 +28,7 @@ $('#add-resident-form').submit(function(event){
 	
 });
 
-async function firebasedb(username,idno,contacts,emails,units,genders){
+async function firebasedb(username,idno,contacts,emails,units,genders,role){
 	
 	await auth.createUserWithEmailAndPassword(email, idno).then(cred => {
 		db.collection('landlord').doc(cred.user.uid).set({
@@ -38,7 +38,8 @@ async function firebasedb(username,idno,contacts,emails,units,genders){
 			contact: contacts,
 			email: emails,
 			unit: ["B-1-1","B-2-2"], //placeholder units
-			gender: genders
+			gender: genders,
+			role: role
 			
 		}).catch(err => {
 			console.error("Error adding document: ", error);
