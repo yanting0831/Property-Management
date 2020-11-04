@@ -25,39 +25,48 @@
 	</div>
 	
 	<div class="content">
-		<h1>Residents</h1>
+		<h1 id="test">Residents</h1>
 		<a id ="add-residents" href="add-residents.html" ><i class="fas fa-plus"></i>  Add Residents</a>
-		<!--<a id ="drop-residents" href="residents.html"><i class="fas fa-trash-alt"></i>  Drop Residents</a>-->
+		<a id ="create-admin" href="create-admin.html" ><i class="fas fa-plus"></i>  Create Admin</a>
 		
-		<form action="index.html" method="post" class="mt-0 col-md-10" id="add-resident-form">
+		<form action="add-resident.php" method="post" class="mt-0 col-md-10" id="add-resident-form">
+		
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
-					<label for="fname" >First name</label>
-					<input type="text" id="fname" class="form-control" placeholder="e.g. John" required>
-				</div>
-			  
-				<div class="col-md-4 mb-4 px-4">
-					<label for="lname">Last name</label>
-					<input type="text" id="lname" class="form-control" placeholder="e.g. Doe" required>
-				</div>
-			</div>
-
-			<div class="form-row">
-				<div class="col-md-4 mb-4">
-					<label for="icnumber">Identificaton No.</label>
-					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>		
+					<label for="resident-type">Resident Type</label>
+					<select onClick="addTenants" class="form-control" id="resident-type">
+						<option value="landlord">Landlord</option>
+						<option value="tenant">Tenant</option>
+					</select>
 				</div>
 				
 				<div class="col-md-4 mb-4 px-4">
-					<label for="gender">Gender</label>
-						<div class="gender-input">							
-							<input type="radio" name="gender" value="female" class="gender">
-							<label for="female">Female</label>							
-							
-							<input type="radio" name="gender" value="male" class="gender" >
-							<label for="male">Male</label>
-						</div>	
+					<label for="unitno">Unit no.</label>
+					<input type="text" id="unitno" class="form-control" placeholder="e.g. B-8-1" required>		
+				</div>				
+			</div>
+		
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="name" >Name</label>
+					<input type="text" name="name" id="name" class="form-control" placeholder="Full name (e.g. John Doe)" required>
 				</div>
+				
+				<div id="have-tenant" class="col-md-4 mb-4 px-4">
+					<label for="tenant">Tenant</label>
+					<div class="tenant">							
+						<input id="yes-button" type="radio" name="radAnswer" value="yes" class="gender">
+						<label for="yes">Yes</label>							
+						
+						<input id="no-button" type="radio" name="radAnswer" value="no" class="gender">
+						<label for="no">No</label>
+					</div>	
+				</div>
+			</div>
+			
+			<div class="col-md-4 mb-4 px-0">
+					<label for="icnumber">Identificaton No.</label>
+					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>		
 			</div>
 
 			<div class="form-row">
@@ -65,26 +74,13 @@
 					<label for="cntno">Contact no.</label>
 					<input type="tel" id="contact" class="form-control" placeholder="e.g. 012-3456789" required>		
 				</div>
-
-				<div class="col-md-4 mb-4 px-4">
-					<label for="email">Email</label>
-					<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>		
-				</div>
 			</div>
 			
 			<div class="col-md-4 mb-4 px-0">
-				<label for="unitno">Unit no.</label>
-				<input type="text" id="unitno" class="form-control" placeholder="e.g. B-8-1" required>		
+				<label for="email">Email</label>
+				<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>		
 			</div>
-
-			<div class="col-md-4 mb-4 px-0">
-				<label for="resident-type">Resident Type</label>
-				<select class="form-control" id="resident-type">
-					<option>Landlord</option>
-					<option>Tenant</option>
-				</select>
-			</div>
-				
+							
 			<button id="done-button" type="submit" name="done"><i class="fas fa-check"></i>  Done</button>					
 		</form>
 	</div>
@@ -98,5 +94,17 @@
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
 <script src="firebase.js"></script>
 <script src="auth(logged in).js"></script>
+<script>
+	function addTenants(){
+		var residentType = document.getElementById('resident-type');
+		var haveTenant = document.getElementById('have-tenant');
+		if(resident-type.value === "landlord"){
+			haveTenant.style.display = "block";
+		}
+		else if(resident-type.value == "tenant"){
+			haveTenant.style.display = "none";
+		}		
+	}
+</script>
 </body>
 </html>
