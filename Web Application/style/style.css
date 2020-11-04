@@ -17,6 +17,7 @@ body{
 	height: 100%;
 	background: #C8E0FF;
 	z-index: 950;
+	overflow: hidden;
 }
 
 .sidebar header{	
@@ -45,7 +46,7 @@ ul li:hover a{
 }
 
 #logout{
-	margin-top: 38%;
+	margin-top: 15%;
 	color: #CCA679;
 }
 
@@ -97,7 +98,7 @@ ul li:hover a{
 	
 /* FORM TYPOGRAPHY*/
 
-.loginpage input[type=button], input[type=submit], input[type=reset]  {
+.loginpage input[type=button], .loginpage input[type=submit], .loginpage input[type=reset]  {
   background-color: #7278B9;
   border: none;
   color: white;
@@ -360,6 +361,44 @@ ul li:hover a{
 	cursor: pointer;
 }
 
+
+/*Update bill page*/
+.update-bill{
+	background: white;
+	z-index: 900;		
+	position: relative;	
+}
+
+.update-bill h1{
+	position: fixed;
+	color: #CCA679;	
+	top: 3%;
+	left: 22%;
+}
+
+.update-bill form{
+	position: fixed;
+	top: 20%;
+	left: 21%;
+	width: 70%;
+}
+
+#update-button{
+	position: fixed;	
+	background-color: #C8E0FF;
+	color: #5F6392;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 1% 2%;
+	left: 75%;
+	top: 20%;	
+}
+
+#update-button:hover{
+	cursor: pointer;
+}
+
 .gender{
 	border: 1px solid #495057;
 	border-radius: 3.5px;
@@ -408,7 +447,8 @@ input[name="searchbar"]{
 	width: 4rem;
 	height: 4rem;
 	border-radius: 50%;
-	margin-left: 2vw;float: left;
+	margin-left: 2vw;
+	float: left;
 }
 
 .time{
@@ -432,6 +472,45 @@ input[name="searchbar"]{
 .text p {
  	margin:  auto;
 }
+
+/*Announcement php */
+.content img{
+	position: fixed;
+	top: 10%;
+	left: 55%;
+}
+
+.content .announcement-sent{
+	top: 25%;
+	left: 45%;
+	color: #5F6392;
+}
+
+.content .announcement-text{
+	left: 40%;
+	top: 35%;
+	font-size: 1.8vw;
+	color: maroon;
+}
+
+.content .redirect{
+	left: 40%;
+	top: 43%;
+	font-size: 1.5vw;
+	color: #CCA679;
+}
+
+/* Announcement */
+#submit_btn{
+	background-color: #7278B9;
+	color: white;
+}
+
+#submit_btn:hover{
+	background-color: #CCA679;
+}
+
+	
 
 
 
