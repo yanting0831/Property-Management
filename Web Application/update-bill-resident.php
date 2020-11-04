@@ -109,7 +109,7 @@ else{
 					<input type="text" name="unit_no" id="unit_no" class="form-control" <?php setValue($_POST['unit']); ?> placeholder="B-8-1" required <?php disable(); ?> />
 				</div>	
 			</div>
-			<input type="submit" value="Update" name="update"/>
+			<input type="submit" value="Update" />
 				
 			
 			<!--<button action="confirm_bill.php" id="update-button" type="submit" value="Update" name="update"><i class="fas fa-check"></i> Update</button>-->				
