@@ -24,7 +24,7 @@ db.collection("booking").get().then((querySnapshot) => {
 });*/
 var t = $('#bookings').DataTable({
   "pagingType": "simple_numbers",
-  info: false,
+  "info": false,
   "sDom": '<"top"i>rt<"bottom"flp><"clear">'
 });
 
