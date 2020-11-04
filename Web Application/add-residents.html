@@ -64,22 +64,37 @@
 				</div>
 			</div>
 			
-			<div class="col-md-4 mb-4 px-0">
-					<label for="icnumber">Identificaton No.</label>
-					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>		
-			</div>
-
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
+					<label for="icnumber">Identificaton No.</label>
+					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>
+				</div>
+			
+				<div class="col-md-4 mb-4 px-4">
 					<label for="cntno">Contact no.</label>
 					<input type="tel" id="contact" class="form-control" placeholder="e.g. 012-3456789" required>		
 				</div>
 			</div>
-			
-			<div class="col-md-4 mb-4 px-0">
-				<label for="email">Email</label>
-				<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>		
+
+			<div class="form-row">
+				<div class="col-md-4 mb-4">
+					<label for="email">Email</label>
+					<input type="text" id="carplateNo" class="form-control" placeholder="QAA123" required>		
+				</div>
+				
+				<div class="col-md-4 mb-4 px-4">
+					<label for="carplate-no">Carplate No.</label>
+					<input type="text" id="carplate-number" class="form-control" placeholder="QAA123" required>
+					
+						<button class="add">Add carplate</button>
+						<!--button class="remove">Remove carplate</button-->
+					
+					<div id="new_carplate_no"></div>
+					<input type="hidden" value="1" id="total_carplate_no">
+				</div>
 			</div>
+			
+			
 							
 			<button id="done-button" type="submit" name="done"><i class="fas fa-check"></i>  Done</button>					
 		</form>
@@ -105,6 +120,28 @@
 			haveTenant.style.display = "none";
 		}		
 	}
+	
+	
+	/*$('.add').on('click', add);
+    $('.remove').on('click', remove);
+
+	/*function add() {
+	  var new_carplate_no = parseInt($('#total_carplate_no').val()) + 1;
+	  var new_input = "<input type='text' id='new_" + new_carplate_no + "'>";
+
+	  $('#new_carplate_no').append(new_input);
+	  
+	  $('#total_carplate_no').val(new_carplate_no);
+	}*/
+
+	/*function remove() {
+	  var last_carplate_no = $('#total_carplate_no').val();
+
+	  if (last_carplate_no > 1) {
+		$('#new_' + last_carplate_no).remove();
+		$('#total_carplate_no').val(last_carplate_no - 1);
+	  }
+	}*/
 </script>
 </body>
 </html>
