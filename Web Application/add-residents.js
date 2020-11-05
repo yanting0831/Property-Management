@@ -66,29 +66,5 @@ async function createresident(username,idno,contacts,emails,units,role){
 		}
 		
 	});
-	
-	await auth.createUserWithEmailAndPassword(emails, idno).then(cred => {
-		console.log("entered function");
-		
-		
-	}).then(() => {
-		//do something
-	}).catch(err => {
-		switch (err.code) {
-			case 'auth/email-already-in-use':
-//				console.log(`Email address ${this.state.email} already in use.`);
-				alert("user already exist");
-			  	break;
-			case 'auth/invalid-email':
-				alert("invalid email");
-			  	break;
-			case 'auth/operation-not-allowed':
-				alert("Error during sign up");
-			  	break;
-			default:
-			  	console.log(error.message);
-			  	break;
-      }
-	});
 
 }
