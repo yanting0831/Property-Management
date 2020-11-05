@@ -1,6 +1,7 @@
 <?php
-if(empty($_POST['price']) || empty($_POST['payment-desc']) || empty($_POST['user_id'])){
-
+if(empty($_POST['price']) || empty($_POST['payment-desc']) || empty($_POST['user_id']) || empty($_POST['name']) || empty($_POST['unit_no']) || empty($_POST['contact']) || empty($_POST['email'])){
+	print_r($_POST);
+	function setData($data){}
 }
 else
 {
@@ -63,7 +64,7 @@ else
 			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 		</ul>
 	</div>
-		<?php setData('user_id'); setData('price'); setData('payment-desc'); ?>
+		<?php setData('user_id'); setData('price'); setData('payment-desc'); setData('name'); setData('contact'); setData('unit_no'); setData('email'); ?>
 	</body>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>

@@ -6,7 +6,7 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['contact']) |
 else{
 	function disable()
 	{
-		echo "disabled";
+		echo "readonly='readonly'";
 	}
 	
 	function setValue($value)
@@ -75,7 +75,7 @@ else{
 				</div>	
 				<div class="col-md-4 mb-4">
 					<label for="contact">Contact</label>
-					<input type="text" name="contract" id="contact" class="form-control" <?php setValue($_POST['contact']); ?> placeholder="0123456789" required <?php disable(); ?> />
+					<input type="text" name="contact" id="contact" class="form-control" <?php setValue($_POST['contact']); ?> placeholder="0123456789" required <?php disable(); ?> />
 				</div>	
 			</div>
 		
