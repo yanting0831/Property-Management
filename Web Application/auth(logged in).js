@@ -8,12 +8,10 @@ auth.onAuthStateChanged(user => {
 	  console.log(user,"logged in.");
 	  user.getIdTokenResult().then(idTokenResult => {
 		user.master = idTokenResult.claims.master;
-			if (user.master) {
-				
-				//logout();
-	  			
-			}else{
+		user.admin = idTokenResult.claims.admin;
+			if (!user.master && !user.admin) {
 				console.log("user is not a master or admin");
+				logout();	
 			}
     	});
   }
