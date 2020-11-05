@@ -20,31 +20,43 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 
 async function createadmin(emails,password){
 	
-	await auth.createUserWithEmailAndPassword(emails, password).then(cred => {
-		
-		const addAdminRole = functions.httpsCallable('addAdminRole');
-		addAdminRole({ email: emails }).then(result => {
-			console.log(result);
+//	await auth.createUserWithEmailAndPassword(emails, password).then(cred => {
+		const createUser = functions.httpsCallable('createUser');
+		createUser({ email: emails,pass:password }).then(result => {
+//			console.log(result);
+//			console.log(result.data.message);
+			if(result.data.message == "Success"){
+				console.log("user has been created");
+				const addAdminRole = functions.httpsCallable('addAdminRole');
+				addAdminRole({ email: emails }).then(result => {
+					console.log(result);
+				});
+			}else{
+				console.log(result);
+				alert(result);
+			}
 		});
+	
 		
-	}).then(() => {
-		//do something
-	}).catch(err => {
-		switch (err.code) {
-			case 'auth/email-already-in-use':
-//				console.log(`Email address ${this.state.email} already in use.`);
-				alert("user already exist");
-			  	break;
-			case 'auth/invalid-email':
-				alert("invalid email");
-			  	break;
-			case 'auth/operation-not-allowed':
-				alert("Error during sign up");
-			  	break;
-			default:
-			  	console.log(error.message);
-			  	break;
-      }
-	});
+		
+//	}).then(() => {
+//		//do something
+//	}).catch(err => {
+//		switch (err.code) {
+//			case 'auth/email-already-in-use':
+////				console.log(`Email address ${this.state.email} already in use.`);
+//				alert("user already exist");
+//			  	break;
+//			case 'auth/invalid-email':
+//				alert("invalid email");
+//			  	break;
+//			case 'auth/operation-not-allowed':
+//				alert("Error during sign up");
+//			  	break;
+//			default:
+//			  	console.log(error.message);
+//			  	break;
+//      }
+//	});
 
 }

@@ -2,8 +2,8 @@ auth.onAuthStateChanged(user => {
   if (user) {
 	  	
 	  	user.getIdTokenResult().then(idTokenResult => {
-		user.admin = idTokenResult.claims.admin;
-			if (user.admin) {
+		user.master = idTokenResult.claims.master;
+			if (user.master) {
 				document.getElementById("create-admin").style.display = "block";
 			}
     	});

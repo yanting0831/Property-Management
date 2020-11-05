@@ -32,3 +32,22 @@ exports.addMasterRole = functions.https.onCall((data,context)=>{
 		return err;
 	});
 });
+
+exports.createUser = functions.https.onCall((data,context)=>{
+	return admin.auth().createUser({
+		email: data.email,
+		password: data.pass,
+		disabled: false
+	}).then(function(userRecord) {
+		// See the UserRecord reference doc for the contents of userRecord.
+		console.log('Successfully created new user:', userRecord.uid);
+		return {
+			message: `Success`
+		};
+	}).catch(function(err) {
+		console.log('Error creating new user:', err);
+		return {
+			message: err
+		};
+	});
+});

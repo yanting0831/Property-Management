@@ -3,8 +3,8 @@ auth.onAuthStateChanged(user => {
   if (user) {
 	  	
 	  	user.getIdTokenResult().then(idTokenResult => {
-		user.admin = idTokenResult.claims.admin;
-			if (user.admin) {
+		user.master = idTokenResult.claims.master;
+			if (user.master) {
 				document.getElementById("create-admin").style.display = "block";
 			}
     	});
@@ -34,14 +34,21 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	
 	// sign up the user & add firestore data
 	//by default icno will be password
-	createresident(name,idno,contact,email,unitno,restype)
+	if(name == "" ||idno == "" ||contact == "" ||email == "" ||unitno == "" ||restype == "" ){
+		
+	}else{
+		createresident(name,idno,contact,email,unitno,restype)
+	}
+	
 });
 
 async function createresident(username,idno,contacts,emails,units,role){
 	
-	await auth.createUserWithEmailAndPassword(emails, idno).then(cred => {
-		console.log("entered function");
-		db.collection('landlord').doc(cred.user.uid).set({
+	const createUser = functions.httpsCallable('createUser');
+	createUser({ email: emails,pass:password }).then(result => {
+		
+		if(result == emails){
+			db.collection('landlord').doc(cred.user.uid).set({
 			
 		  	name: username,
 			ic: idno,
@@ -50,9 +57,19 @@ async function createresident(username,idno,contacts,emails,units,role){
 			unit: firebase.firestore.FieldValue.arrayUnion(units), 
 			role: role
 			
-		}).catch(err => {
-			console.error("Error adding document: ", error);
-		});
+			}).catch(err => {
+				console.error("Error adding document: ", error);
+			});
+		}else{
+			console.log(result);
+			alert(result);
+		}
+		
+	});
+	
+	await auth.createUserWithEmailAndPassword(emails, idno).then(cred => {
+		console.log("entered function");
+		
 		
 	}).then(() => {
 		//do something
