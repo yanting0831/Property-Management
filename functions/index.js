@@ -42,7 +42,8 @@ exports.createUser = functions.https.onCall((data,context)=>{
 		// See the UserRecord reference doc for the contents of userRecord.
 		console.log('Successfully created new user:', userRecord.uid);
 		return {
-			message: `Success`
+			message: `Success`,
+			uid: `${userRecord.uid}`
 		};
 	}).catch(function(err) {
 		console.log('Error creating new user:', err);

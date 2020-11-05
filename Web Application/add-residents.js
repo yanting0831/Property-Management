@@ -46,9 +46,9 @@ async function createresident(username,idno,contacts,emails,units,role){
 	
 	const createUser = functions.httpsCallable('createUser');
 	createUser({ email: emails,pass:idno }).then(result => {
-		
+		console.log(result);
 		if(result.data.message == "Success"){
-			db.collection('landlord').doc(cred.user.uid).set({
+			db.collection('landlord').doc(result.data.uid).set({
 			
 		  	name: username,
 			ic: idno,
@@ -57,6 +57,8 @@ async function createresident(username,idno,contacts,emails,units,role){
 			unit: firebase.firestore.FieldValue.arrayUnion(units), 
 			role: role
 			
+			}).then(()=>{
+				console.log("user created successfully");
 			}).catch(err => {
 				console.error("Error adding document: ", error);
 			});
