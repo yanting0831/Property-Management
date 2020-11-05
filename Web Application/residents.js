@@ -57,14 +57,15 @@ async function deleteUser(ele_id){
 }
 
 async function deleteRecords(id){
-	var p1 = db.collection("landlord").doc("id").delete().then(function() {
+	var p1 = db.collection("landlord").doc(id).delete().then(function() {
 		console.log("Document successfully deleted!");
 	}).catch(function(error) {
 		console.error("Error removing document: ", error);
 	});
 	
 	await p1.then(()=>{
-		var imageRef = storage.child(id+'.png');
+		var storageRef = storage.ref();
+		var imageRef = storageRef.child(id+'.png');
 
 		// Delete the file
 		imageRef.delete().then(function() {
