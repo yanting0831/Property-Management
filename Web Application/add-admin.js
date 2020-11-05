@@ -3,22 +3,29 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	e.preventDefault();    //stop form from submitting
 	
 	var password = document.getElementById('password').value;
+	var cpassword = document.getElementById('cpassword').value;
 	var email = document.getElementById('email').value;
 
 	
-	// sign up the user & add firestore data
-	//by default icno will be password
-	createadmin(email,password)
+	//validate user input
+	if(password == cpassword && password != "" && cpassword != "" && email != "" ){
+		// sign up the user & add firestore data
+		//by default icno will be password
+		createadmin(email,password);
+	}else{
+		alert("input incorrect");
+	}
+	
 });
 
 async function createadmin(emails,password){
 	
 	await auth.createUserWithEmailAndPassword(emails, password).then(cred => {
 		
-//		const addAdminRole = functions.httpsCallable('addAdminRole');
-//		addAdminRole({ email: emails }).then(result => {
-//			console.log(result);
-//		});
+		const addAdminRole = functions.httpsCallable('addAdminRole');
+		addAdminRole({ email: emails }).then(result => {
+			console.log(result);
+		});
 		
 	}).then(() => {
 		//do something

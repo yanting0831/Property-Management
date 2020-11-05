@@ -1,10 +1,11 @@
 // JavaScript Document
 auth.onAuthStateChanged(user => {
   if (user) {
+	  	
 	  	user.getIdTokenResult().then(idTokenResult => {
-			user.admin = idTokenResult.claims.admin;
-			if (!user.admin) {
-				document.getElementById("create-admin").style.display = "none";
+		user.admin = idTokenResult.claims.admin;
+			if (user.admin) {
+				document.getElementById("create-admin").style.display = "block";
 			}
     	});
   }
