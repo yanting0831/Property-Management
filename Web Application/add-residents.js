@@ -47,7 +47,7 @@ async function createresident(username,idno,contacts,emails,units,role){
 	const createUser = functions.httpsCallable('createUser');
 	createUser({ email: emails,pass:idno }).then(result => {
 		
-		if(result == emails){
+		if(result.data.message == "Success"){
 			db.collection('landlord').doc(cred.user.uid).set({
 			
 		  	name: username,
