@@ -45,7 +45,7 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 async function createresident(username,idno,contacts,emails,units,role){
 	
 	const createUser = functions.httpsCallable('createUser');
-	createUser({ email: emails,pass:password }).then(result => {
+	createUser({ email: emails,pass:idno }).then(result => {
 		
 		if(result == emails){
 			db.collection('landlord').doc(cred.user.uid).set({
