@@ -1,54 +1,94 @@
 // JavaScript Document
+auth.onAuthStateChanged(user => {
+  if (user) {
+	  	
+	  	user.getIdTokenResult().then(idTokenResult => {
+		user.master = idTokenResult.claims.master;
+			if (user.master) {
+				document.getElementById("create-admin").style.display = "block";
+			}
+    	});
+  }
+});
 
-$('#add-resident-form').submit(function(event){
-	
-	// get user info
-	var firstname = $('#fname').value;
-	var lname = $('#lname').value;
-	var idno = $('#idno').value;
-	var genderlist = document.getElementsByClassName('gender');
-	var gender;
-	var contact = $('#contact').value;
-	var email = $('#email').value;
-	var unitno = $('#unitno').value;
-	var restype = $('#resident-type').options[e.selectedIndex].value;
-	//get gender
-	for (var i = 0, length = genderlist.length; i < length; i++) {
-	  if (genderlist[i].checked) {
-		// do whatever you want with the checked radio
-		gender = radios[i].value;
-		// only one radio can be logically checked, don't check the rest
-		break;
-	  }
+function addTenants(){
+	var residentType = document.getElementById('resident-type');
+	var haveTenant = document.getElementById('have-tenant');
+	if(residentType.value == "landlord"){
+		haveTenant.style.display = "block";
 	}
+	else if(residentType.value == "tenant"){
+		haveTenant.style.display = "none";
+	}
+}
+document.getElementById('add-resident-form').addEventListener("submit", function(e){
+	e.preventDefault();    //stop form from submitting
+	
+	var name = document.getElementById('name').value;
+	var idno = document.getElementById('idno').value;
+	var contact = document.getElementById('contact').value;
+	var email = document.getElementById('email').value;
+	var unitno = document.getElementById('unitno').value;
+	var restype = document.getElementById('resident-type').value;
+
 	
 	// sign up the user & add firestore data
-	//by default ic no will be password
-	
+	//by default icno will be password
+	if(name == "" ||idno == "" ||contact == "" ||email == "" ||unitno == "" ||restype == "" ){
+		
+	}else{
+		createresident(name,idno,contact,email,unitno,restype)
+	}
 	
 });
 
-async function firebasedb(username,idno,contacts,emails,units,genders,role){
+async function createresident(username,idno,contacts,emails,units,role){
 	
-	await auth.createUserWithEmailAndPassword(email, idno).then(cred => {
-		db.collection('landlord').doc(cred.user.uid).set({
+	const createUser = functions.httpsCallable('createUser');
+	createUser({ email: emails,pass:password }).then(result => {
+		
+		if(result == emails){
+			db.collection('landlord').doc(cred.user.uid).set({
 			
-		  	name: ann_title,
+		  	name: username,
 			ic: idno,
 			contact: contacts,
 			email: emails,
-			unit: ["B-1-1","B-2-2"], //placeholder units
-			gender: genders,
+			unit: firebase.firestore.FieldValue.arrayUnion(units), 
 			role: role
 			
-		}).catch(err => {
-			console.error("Error adding document: ", error);
-		});
+			}).catch(err => {
+				console.error("Error adding document: ", error);
+			});
+		}else{
+			console.log(result);
+			alert(result);
+		}
+		
+	});
+	
+	await auth.createUserWithEmailAndPassword(emails, idno).then(cred => {
+		console.log("entered function");
+		
 		
 	}).then(() => {
-		
+		//do something
 	}).catch(err => {
-		console.error("Error adding document: ", error);
+		switch (err.code) {
+			case 'auth/email-already-in-use':
+//				console.log(`Email address ${this.state.email} already in use.`);
+				alert("user already exist");
+			  	break;
+			case 'auth/invalid-email':
+				alert("invalid email");
+			  	break;
+			case 'auth/operation-not-allowed':
+				alert("Error during sign up");
+			  	break;
+			default:
+			  	console.log(error.message);
+			  	break;
+      }
 	});
 
 }

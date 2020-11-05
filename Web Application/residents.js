@@ -1,3 +1,15 @@
+auth.onAuthStateChanged(user => {
+  if (user) {
+	  	
+	  	user.getIdTokenResult().then(idTokenResult => {
+		user.master = idTokenResult.claims.master;
+			if (user.master) {
+				document.getElementById("create-admin").style.display = "block";
+			}
+    	});
+  }
+});
+
 var t = $('#resident-list').DataTable({
 					"pagingType": "simple_numbers",
 					info: false,
