@@ -14,11 +14,16 @@ if (user_id == null || price == null || desc == null || username == null || cont
   alert("price and description cannot be empty");
 } else {
   console.log("hello");
+	var unit;
+	if(unit_no.includes(","))
+		unit = unit_no.split(",");
+	else
+		unit = unit_no;
   db.collection("billing").add({
     user_id: id,
 	name: username,
 	contact: contact,
-	unit: unit_no,
+	unit: unit,
 	email: email,
     amount: price,
     status: "unpaid",

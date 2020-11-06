@@ -54,7 +54,7 @@ else{
 	<div class="update-bill">
 		<h1>Update bill</h1>
 		
-		<form action="confirm_bill.php" id="update-bill-form" method="post" class="mt-0 col-md-10" class="update-bill-form">
+		<form action="confirm-bill.php" id="update-bill-form" method="post" class="mt-0 col-md-10" class="update-bill-form">
 			<input type="hidden" name="user_id" id="user_id" <?php setValue($_POST['user_id']); ?> />
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
