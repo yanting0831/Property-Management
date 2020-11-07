@@ -5,34 +5,54 @@ if(empty($_POST['price']) || empty($_POST['payment-desc']) || empty($_POST['user
 }
 else
 {
+	//initialize variables
+	$name = $_POST['name'];
+	$price = $_POST['price'];
+	$payment = $_POST['payment-desc'];
+	$unitno = $_POST['unit_no'];
+	$email = $_POST['email'];
+//	$contact = $_POST['contact'];
+	
 	function setData($data)
 	{
 		$value = $_POST["$data"];
 		echo "<input type='hidden' value='$value' id='$data' name='$data' />";
 	}
-	$url = "https://fcm.googleapis.com/fcm/send";
-
-	$id = $_POST['user_id'];
-	$fields=array(
-		"to" => "/topics/$id",
-		"notification" => array(
-			"body" => "Your bill is ready. Click here for more info.",
-			"title" => "Your bill is ready"
-		)
-	);
 	
-	$header=array(
-		'Authorization: key=AAAAZA6ZULE:APA91bH8eD1hLLglnMxc68jmu2ynNyDvnVoNRCh5MfDwQB70WZZjzHOz3iCu8A69b4P7X_YbEu2LTGn4npcE1zyHaUMWW2rhdRoGmcuBMVbQdgXRDgf-8_h0grN8wKNS3Lx_IDzzaTZR',
-		'Content-Type:application/json'
-	);
-	$ch = curl_init();
-	curl_setopt($ch,CURLOPT_URL,$url);
-	curl_setopt($ch,CURLOPT_POST,true);
-	curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
-	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
-	$result = curl_exec($ch);
-	curl_close($ch);
+	$msg = "Hi $name, your bills for unit $unitno is now ready for payment";
+
+	// use wordwrap() if lines are longer than 70 characters
+	$msg = wordwrap($msg,70);
+
+	// send email
+	mail($_POST['email'],"Reminder for Bill",$msg);
+	
+	//send notification to fcm
+//	$url = "https://fcm.googleapis.com/fcm/send";
+//
+//	$id = $_POST['user_id'];
+//	$fields=array(
+//		"to" => "/topics/$id",
+//		"notification" => array(
+//			"body" => "Your bill is ready. Click here for more info.",
+//			"title" => "Your bill is ready"
+//		)
+//	);
+//	
+//	$header=array(
+//		'Authorization: key=AAAAZA6ZULE:APA91bH8eD1hLLglnMxc68jmu2ynNyDvnVoNRCh5MfDwQB70WZZjzHOz3iCu8A69b4P7X_YbEu2LTGn4npcE1zyHaUMWW2rhdRoGmcuBMVbQdgXRDgf-8_h0grN8wKNS3Lx_IDzzaTZR',
+//		'Content-Type:application/json'
+//	);
+//	$ch = curl_init();
+//	curl_setopt($ch,CURLOPT_URL,$url);
+//	curl_setopt($ch,CURLOPT_POST,true);
+//	curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
+//	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+//	curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
+//	$result = curl_exec($ch);
+//	curl_close($ch);
+	
+	
 }
 
 ?>
