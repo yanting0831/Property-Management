@@ -31,6 +31,8 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	var unitno = document.getElementById('unitno').value;
 	var restype = document.getElementById('resident-type').value;
 
+	//disable fields
+	updatefields(true);
 	
 	// sign up the user & add firestore data
 	//by default icno will be password
@@ -59,14 +61,38 @@ async function createresident(username,idno,contacts,emails,units,role){
 			
 			}).then(()=>{
 				console.log("user created successfully");
+				//re-enable fields
+				updatefields(false);
+				
 			}).catch(err => {
-				console.error("Error adding document: ", error);
+				console.error("Error adding document: ", err);
+				alert(err);
+				//re-enable fields
+				updatefields(false);
 			});
 		}else{
 			console.log(result);
-			alert(result);
+			alert(result.data.message);
+			updatefields(false);
 		}
 		
 	});
 
+}
+
+function updatefields(status){
+	var name = document.getElementById('name').value;
+	var idno = document.getElementById('idno').value;
+	var contact = document.getElementById('contact').value;
+	var email = document.getElementById('email').value;
+	var unitno = document.getElementById('unitno').value;
+	var restype = document.getElementById('resident-type').value;
+
+	//disable fields
+	name.disabled = status;
+	idno.disabled = status;
+	contact.disabled = status;
+	email.disabled = status;
+	unitno.disabled = status;
+	restype.disabled = status;
 }
