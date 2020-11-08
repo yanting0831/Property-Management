@@ -561,6 +561,22 @@ input[name="searchbar"]{
 	background-color: #CCA679;
 }
 
+
+.add{
+	position: absolute;
+	top: 48%;
+	left: 95%;	
+	background-color: #C8E0FF;
+	color: #5F6392;
+	border: none;
+	border-radius: 5px;
+	padding: 1% 2%;
+	font-weight: bold;	
+	font-family: 'Nunito', sans-serif;
+	font-size: 1.2vw;
+}
+
+
 /*admin only features*/
 #create-admin{
 	display:none;
