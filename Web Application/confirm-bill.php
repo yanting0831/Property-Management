@@ -1,4 +1,5 @@
 <?php
+$message = "";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -55,10 +56,9 @@ else
 		$mail->Body    = $bodyContent;
 
 		if(!$mail->send()) {
-			echo 'Message could not be sent.';
-			echo 'Mailer Error: ' . $mail->ErrorInfo;
+			$message = "Message could not be sent.<br>Mailer Error: " . $mail->ErrorInfo;
 		} else {
-			echo 'Message has been sent';
+			$message = 'Message has been sent';
 		}
 	}
 	
@@ -121,6 +121,7 @@ else
 		</ul>
 	</div>
 		<?php setData('user_id'); setData('price'); setData('payment-desc'); setData('name'); setData('contact'); setData('unit_no'); setData('email'); ?>
+		<p style="position:absolute; left: 20%;"><?php echo $message; ?></p>
 	</body>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
