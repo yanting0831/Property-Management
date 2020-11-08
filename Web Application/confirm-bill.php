@@ -1,4 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require '../vendor/autoload.php';
+
 if(empty($_POST['price']) || empty($_POST['payment-desc']) || empty($_POST['user_id']) || empty($_POST['name']) || empty($_POST['unit_no']) || empty($_POST['contact']) || empty($_POST['email'])){
 	print_r($_POST);
 	function setData($data){}
@@ -19,13 +26,42 @@ else
 		echo "<input type='hidden' value='$value' id='$data' name='$data' />";
 	}
 	
-	$msg = "Hi $name, your bills for unit $unitno is now ready for payment";
+	if(isset($_POST['user_id'])){
+		$msg = "Hi $name, your bills for unit $unitno is now ready for payment";
+		
+		
+		$mail = new PHPMailer;
 
-	// use wordwrap() if lines are longer than 70 characters
-	$msg = wordwrap($msg,70);
+		$mail->isSMTP();                            // Set mailer to use SMTP
+		$mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;                     // Enable SMTP authentication
+		$mail->Username = 'jtang0308@gmail.com';          // SMTP username
+		$mail->Password = 'Avenger 123'; // SMTP password
+		$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
+		$mail->Port = 587;                          // TCP port to connect to
 
-	// send email
-	mail($_POST['email'],"Reminder for Bill",$msg);
+		$mail->setFrom('jtang0308@gmail.com', "Dry'x Residence");
+		//$mail->addAddress('jtang0308@gmail.com');   // Add a recipient
+		$mail->addAddress($email); 
+//		$mail->addCC('cc@example.com');
+//		$mail->addBCC('bcc@example.com');
+
+		$mail->isHTML(true);  // Set email format to HTML
+
+		$bodyContent = '<h1>Reminder for Bill</h1>';
+		$bodyContent .= '<p>'.$msg.'</p>';
+
+		$mail->Subject = 'Reminder for Bill';
+		$mail->Body    = $bodyContent;
+
+		if(!$mail->send()) {
+			echo 'Message could not be sent.';
+			echo 'Mailer Error: ' . $mail->ErrorInfo;
+		} else {
+			echo 'Message has been sent';
+		}
+	}
+	
 	
 	//send notification to fcm
 //	$url = "https://fcm.googleapis.com/fcm/send";
