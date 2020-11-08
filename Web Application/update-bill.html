@@ -2,14 +2,17 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Update Bill - Project Management System</title>
+	<title>Residents - Project Management System</title>
 	<link rel="stylesheet" href="style/style.css"/>
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-	<!-- Place required backend part is fill with #-->
 	<div class="sidebar">
 		<header><img src="images/dryx-black.png" alt="dryx-logo" width="50%"></header>
 		<ul>
@@ -24,47 +27,33 @@
 		</ul>
 	</div>
 	
-	<div class="update-bill">
-		<h1>Update bill</h1>
-		
-		<form id="update-bill-form" action="###" method="post" class="mt-0 col-md-10" id="update-bill-form">
-			<div class="form-row">
-				<div class="col-md-4 mb-4">
-					<label for="price" >Price</label>
-					<input type="digit" id="price" class="form-control" placeholder="89.95" pattern="[0-9]+(\\.[0-9][0-9]?)?"required>
-				</div>
-			</div>
-
-			<div class="form-row">
-				<div class="col-md-4 mb-4">
-					<label for="payment-desc">Payment Description</label>
-					<input type="text" id="idno" class="form-control" placeholder="September Water Bill" required>		
-				</div>				
-			</div>
-
-			<div class="form-row">
-				<div class="col-md-4 mb-4">
-					<label for="bill-for">Bill for</label>
-					<select class="form-control" id="resident-type">
-						<optgroup label="User">
-						  <option value="landlord">Landlord</option>
-						  <option value="tenant">Tenant</option>
-						</optgroup>
-					</select>
-				</div>	
-			</div>
+	<div class="content">
+		<h1>Update Bill</h1>
+		<table id="resident-list" class="table table-bordered striped ">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Contact No.</th>
+					<th>Identification No.</th>
+					<th>Unit number</th>
+					<th>Action</th>
+				</tr>
+			</thead>
 			
-			<div class="form-row">
-				<div class="col-md-4 mb-4">
-					<label for="bill-for">Unit No.</label>
-					<input type="text" id="idno" class="form-control" placeholder="B-8-1" required>
-				</div>	
-			</div>
-				
-			<button action="###" id="update-button" type="submit" value="Update" name="update"><i class="fas fa-check"></i> Update</button>					
-		</form>
+
+			<tbody id="list">
+			</tbody>
+			
+		</table>
+		
+		<div class="pagination-container">
+			<nav>
+				<ul class="pagination"></ul>
+			</nav>
+		</div>
+			
 	</div>
-	
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -73,7 +62,9 @@
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
 <script src="firebase.js"></script>
 <script src="auth(logged in).js"></script>
+<script src="update-bill.js"></script>
 </body>
 </html>

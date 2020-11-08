@@ -561,6 +561,7 @@ input[name="searchbar"]{
 	background-color: #CCA679;
 }
 
+
 .add{
 	position: absolute;
 	top: 48%;
@@ -575,6 +576,11 @@ input[name="searchbar"]{
 	font-size: 1.2vw;
 }
 
+
+/*admin only features*/
+#create-admin{
+	display:none;
+}
 
 
 
