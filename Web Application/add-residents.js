@@ -49,9 +49,9 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	}else{
 		if(restype == "tenant"){
 			var id = document.getElementById('id').value;
-			var ref = db.collection('landlord').doc(id);
+			
 			console.log(ref);
-			createresident(name,idno,contact,email,unitno,restype,carplates,ref);
+			createresident(name,idno,contact,email,unitno,restype,carplates,id);
 		}else{
 			createresident(name,idno,contact,email,unitno,restype,carplates,"");
 		}
