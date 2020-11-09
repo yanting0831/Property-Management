@@ -99,22 +99,19 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="email">Email</label>
-<<<<<<< HEAD:Web Application/add-residents.php
 					<input type="text" id="email" class="form-control" placeholder="eg. example@gmail.com" required>		
-=======
+
 					<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>	
->>>>>>> origin/master:Web Application/add-residents.html
+
 				</div>
 				
 				<div class="col-md-4 mb-4 px-4" id="carplates">
 					<label for="carplate-no">Carplate No.</label>
-<<<<<<< HEAD:Web Application/add-residents.php
 					<input type="text" id="carplate-number" class='carplates' class="form-control" placeholder="QAA123" required>
 					
 						<button id="add" class="add" type="button">Add carplate</button>
-=======
+
 					<input type="text" id="carplate-number" class="form-control" placeholder="QAA123">
->>>>>>> origin/master:Web Application/add-residents.html
 					
 					
 					<div id="new_carplate_no"></div>
@@ -140,7 +137,6 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="auth(logged in).js"></script>
 
 <script>
-<<<<<<< HEAD:Web Application/add-residents.php
 	var new_carplate_no = 0;
 
 
@@ -149,23 +145,6 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 		add(new_carplate_no++);
 	});
 													
-	
-=======
-	function addTenants(){
-		var residentType = document.getElementById('resident-type');
-		var haveTenant = document.getElementById('have-tenant');
-		if(resident-type.value === "landlord"){
-			haveTenant.style.display = "block";
-		}
-		else if(resident-type.value == "tenant"){
-			haveTenant.style.display = "none";
-		}		
-	}
-
-	
-	/*('.add').on('click', add);
-    $('.remove').on('click', remove);
->>>>>>> origin/master:Web Application/add-residents.html
 
 	function add() {
 	  	
@@ -177,7 +156,6 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 		var button_list = document.getElementsByClassName("remove");
 		for (var i=0; i< button_list.length; i++ ) {
 
-<<<<<<< HEAD:Web Application/add-residents.php
 			button_list[i].addEventListener("click", function(){
 				remove(this.id);
 				this.remove();
@@ -191,14 +169,6 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 		carplates.remove();
 	}
 </script>
-=======
-	  if (last_carplate_no > 1) {
-		$('#new_' + last_carplate_no).remove();
-		$('#total_carplate_no').val(last_carplate_no - 1);
-	  }
-	}*/
-	</script>
->>>>>>> origin/master:Web Application/add-residents.html
 <script src="add-residents.js"></script>
 
 </body>
