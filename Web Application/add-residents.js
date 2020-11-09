@@ -14,11 +14,12 @@ auth.onAuthStateChanged(user => {
 function addTenants(){
 	var residentType = document.getElementById('resident-type');
 	var haveTenant = document.getElementById('have-tenant');
+	console.log(residentType.value);
 	if(residentType.value == "landlord"){
-		haveTenant.style.display = "block";
+		haveTenant.style.display = "none";
 	}
 	else if(residentType.value == "tenant"){
-		haveTenant.style.display = "none";
+		haveTenant.style.display = "block";
 	}
 }
 document.getElementById('add-resident-form').addEventListener("submit", function(e){
@@ -30,7 +31,14 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	var email = document.getElementById('email').value;
 	var unitno = document.getElementById('unitno').value;
 	var restype = document.getElementById('resident-type').value;
-
+	
+	var carplates_element = document.getElementById('carplates').getElementsByTagName("input");
+	var carplates = new Array();
+	for(i=0;i<carplates_element.length;i++)
+	{
+		carplates[i]=carplates_element[i].value;
+	}
+	
 	//disable fields
 	updatefields(true);
 	
@@ -39,12 +47,19 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	if(name == "" ||idno == "" ||contact == "" ||email == "" ||unitno == "" ||restype == "" ){
 		
 	}else{
-		createresident(name,idno,contact,email,unitno,restype)
+		if(restype == "landlord"){
+			var id = document.getElementById('id').value;
+			db.collection('landlord').doc(id);
+			createresident(name,idno,contact,email,unitno,restype,carplates,id);
+		}else{
+			createresident(name,idno,contact,email,unitno,restype,carplates,"");
+		}
+		//
 	}
 	
 });
 
-async function createresident(username,idno,contacts,emails,units,role){
+async function createresident(username,idno,contacts,emails,units,role,carplates,landlordref){
 	
 	const createUser = functions.httpsCallable('createUser');
 	createUser({ email: emails,pass:idno }).then(result => {
@@ -57,7 +72,9 @@ async function createresident(username,idno,contacts,emails,units,role){
 			contact: contacts,
 			email: emails,
 			unit: firebase.firestore.FieldValue.arrayUnion(units), 
-			role: role
+			role: role,
+			carplate: carplates,
+			landlord: landlordref
 			
 			}).then(()=>{
 				console.log("user created successfully");

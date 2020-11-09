@@ -1,3 +1,22 @@
+<?php
+$name = "";
+$id = "";
+
+$element = "";
+$selected = "";
+$disabled = "disabled";
+if(isset($_POST['id']) && isset($_POST['name'])){
+	$name = $_POST['name'];
+	$id = $_POST['id'];
+		
+	$element = "<input type='hidden' value='$id' id='id'></input>";
+		
+	$selected = "selected";
+//	echo "<script>console.log('isset')</script>";
+	$disabled = "";
+}
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -34,13 +53,14 @@
 		<a id ="create-admin" href="create-admin.html" ><i class="fas fa-plus"></i>  Create Admin</a>
 		
 		<form action="" method="post" class="mt-0 col-md-10" id="add-resident-form">
-		
+			<?php echo $element;?>
+			
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="resident-type">Resident Type</label>
-					<select onClick="addTenants()" class="form-control" id="resident-type">
+					<select onChange="addTenants()" class="form-control" id="resident-type">
 						<option value="landlord">Landlord</option>
-						<option value="tenant">Tenant</option>
+						<option value="tenant" <?php echo $selected; echo $disabled;?>>Tenant</option>
 					</select>
 				</div>
 				
@@ -56,15 +76,11 @@
 					<input type="text" name="name" id="name" class="form-control" placeholder="Full name (e.g. John Doe)" required>
 				</div>
 				
-				<div id="have-tenant" class="col-md-4 mb-4 px-4">
-					<label for="tenant">Tenant</label>
+				<div id="have-tenant" class="col-md-4 mb-4 px-4" style="display:none;">
+					<label for="tenant">landlord</label>
 					<div class="tenant">							
-						<input id="yes-button" type="radio" name="radAnswer" value="yes" class="gender">
-						<label for="yes">Yes</label>							
-						
-						<input id="no-button" type="radio" name="radAnswer" value="no" class="gender">
-						<label for="no">No</label>
-					</div>	
+						<input id="yes-button" type="text" name="radAnswer" class="gender" <?php echo "value='$name'"?> disabled>		
+					</div>
 				</div>
 			</div>
 			
@@ -83,18 +99,18 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="email">Email</label>
-					<input type="text" id="carplateNo" class="form-control" placeholder="QAA123" required>		
+					<input type="text" id="email" class="form-control" placeholder="eg. example@gmail.com" required>		
 				</div>
 				
-				<div class="col-md-4 mb-4 px-4">
+				<div class="col-md-4 mb-4 px-4" id="carplates">
 					<label for="carplate-no">Carplate No.</label>
-					<input type="text" id="carplate-number" class="form-control" placeholder="QAA123" required>
+					<input type="text" id="carplate-number" class='carplates' class="form-control" placeholder="QAA123" required>
 					
-						<button class="add">Add carplate</button>
-						<!--button class="remove">Remove carplate</button-->
+						<button id="add" class="add" type="button">Add carplate</button>
+					
 					
 					<div id="new_carplate_no"></div>
-					<input type="hidden" value="1" id="total_carplate_no">
+					
 				</div>
 			</div>
 			
@@ -116,39 +132,39 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="auth(logged in).js"></script>
 
 <script>
-	function addTenants(){
-		var residentType = document.getElementById('resident-type');
-		var haveTenant = document.getElementById('have-tenant');
-		if(resident-type.value === "landlord"){
-			haveTenant.style.display = "block";
-		}
-		else if(resident-type.value == "tenant"){
-			haveTenant.style.display = "none";
-		}		
-	}
-	
-	
-	/*$('.add').on('click', add);
-    $('.remove').on('click', remove);
+	var new_carplate_no = 0;
 
-	/*function add() {
-	  var new_carplate_no = parseInt($('#total_carplate_no').val()) + 1;
-	  var new_input = "<input type='text' id='new_" + new_carplate_no + "'>";
 
-	  $('#new_carplate_no').append(new_input);
+	document.getElementById('add').addEventListener("click", function(e){
+		e.preventDefault();
+		add(new_carplate_no++);
+	});
+													
+	
+
+	function add() {
+	  	
+	  	var new_input = "<button class='remove' id='"+new_carplate_no+"' type='button'>Remove carplate</button><input type='text' id='carplate"+new_carplate_no+"' id='carplate-number' class='form-control' class='carplates' placeholder='QAA123' required'>";
+
+	  	$('#new_carplate_no').append(new_input);
 	  
-	  $('#total_carplate_no').val(new_carplate_no);
-	}*/
+		
+		var button_list = document.getElementsByClassName("remove");
+		for (var i=0; i< button_list.length; i++ ) {
 
-	/*function remove() {
-	  var last_carplate_no = $('#total_carplate_no').val();
+			button_list[i].addEventListener("click", function(){
+				remove(this.id);
+				this.remove();
+			});
+		}
+		
+	}
 
-	  if (last_carplate_no > 1) {
-		$('#new_' + last_carplate_no).remove();
-		$('#total_carplate_no').val(last_carplate_no - 1);
-	  }
-	}*/
-
+	function remove(elementno) {
+	  	var carplates = document.getElementById("carplate"+elementno);
+		carplates.remove();
+	}
+</script>
 <script src="add-residents.js"></script>
 
 </body>
