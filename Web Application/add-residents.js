@@ -47,9 +47,10 @@ document.getElementById('add-resident-form').addEventListener("submit", function
 	if(name == "" ||idno == "" ||contact == "" ||email == "" ||unitno == "" ||restype == "" ){
 		
 	}else{
-		if(restype == "landlord"){
+		if(restype == "tenant"){
 			var id = document.getElementById('id').value;
 			var ref = db.collection('landlord').doc(id);
+			console.log(ref);
 			createresident(name,idno,contact,email,unitno,restype,carplates,ref);
 		}else{
 			createresident(name,idno,contact,email,unitno,restype,carplates,"");

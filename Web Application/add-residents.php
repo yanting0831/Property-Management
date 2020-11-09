@@ -101,7 +101,6 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 					<label for="email">Email</label>
 					<input type="text" id="email" class="form-control" placeholder="eg. example@gmail.com" required>		
 
-					<input type="text" id="email" class="form-control" placeholder="e.g. johndoe@hotmail.com" required>	
 
 				</div>
 				
@@ -110,8 +109,6 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 					<input type="text" id="carplate-number" class='carplates' class="form-control" placeholder="QAA123" required>
 					
 						<button id="add" class="add" type="button">Add carplate</button>
-
-					<input type="text" id="carplate-number" class="form-control" placeholder="QAA123">
 					
 					
 					<div id="new_carplate_no"></div>
