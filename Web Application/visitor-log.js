@@ -7,8 +7,10 @@ var t = $('#visitor-log').DataTable({
 
 db.collection("visitor").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
-	  var checkin_time = new Date(doc.data().checkin_time.seconds);
-	  var checkout_time = new Date(doc.data().checkout_time.seconds);
+	  var checkin_time = doc.data().checkin_time.toDate();
+	  var checkout_time = doc.data().checkout_time.toDate();
+	  console.log(doc.data().checkin_time);
+	  console.log(doc.data().checkout_time);
       t.row.add([
         doc.data().username,
 		doc.data().ic,
