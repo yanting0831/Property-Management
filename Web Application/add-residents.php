@@ -106,16 +106,13 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 				
 				<div class="col-md-4 mb-4 px-4" id="carplates">
 					<label for="carplate-no">Carplate No.</label>
-					<div class="form-inline">
-						<input type="text" id="carplate-number" class="form-control mr-1" placeholder="QAA123" required>
-						<button id="add" class="btn btn-primary" type="button">Add</button>
-					</div>
+					<input type="text" id="carplate-number" class='carplates' class="form-control" placeholder="QAA123" required>
 					
-					<div class="form-inline">
-						<div id="new_carplate_no">
-						
-						</div>				
-					</div>
+						<button id="add" class="add" type="button">Add carplate</button>
+					
+					
+					<div id="new_carplate_no"></div>
+					
 				</div>
 			</div>
 			
@@ -148,24 +145,18 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 
 	function add() {
 	  	
-		
-	  	var new_input = "<input type='text' id='carplate"+new_carplate_no+"' id='carplate-number' class='form-control mr-1' class='carplates' placeholder='QAA123' required'><button name='remove-carplate' class='btn btn-primary' id='"+new_carplate_no+"' type='button'>Remove</button>";
+	  	var new_input = "<button class='remove' id='"+new_carplate_no+"' type='button'>Remove carplate</button><input type='text' id='carplate"+new_carplate_no+"' id='carplate-number' class='form-control' class='carplates' placeholder='QAA123' required'>";
 
 	  	$('#new_carplate_no').append(new_input);
-				
-		var button_list = document.getElementsByName("remove-carplate");
+	  
+		
+		var button_list = document.getElementsByClassName("remove");
 		for (var i=0; i< button_list.length; i++ ) {
 
 			button_list[i].addEventListener("click", function(){
 				remove(this.id);
 				this.remove();
 			});
-			
-			//Got bug
-			if(i >= 4){				
-				alert("You can only add up to 5 carplates.");
-				document.getElementById('button').disabled = true;
-			}
 		}
 		
 	}
