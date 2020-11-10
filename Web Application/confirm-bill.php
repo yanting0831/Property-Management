@@ -119,57 +119,9 @@ else
 			<li><a href="bookings.html"><i class="fas fa-building"></i>Facility bookings</a></li>
 			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 		</ul>
-		</div>
-		
-		<div class="content">	
-		<!--img src="images/success.png" alt="success-icon" style="width:5%"/>
-		<h1 class="bill-updated">Bill Updated</h1>
-		<h1 class="bill-updated-text">Updated bill will be sent to user shortly!</h1>
-		<h1 class="redirect">Please wait, you will be redirected to the homepage shortly....</h1-->
-		
-		<div>
-			<table id="update-bill-table" class="table table-bordered">  
-			  <tbody>
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('user_id');?></td>
-				</tr>
-
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('unit_no');?></td>
-				</tr>
-				
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('name');?></td>
-				</tr>
-
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('contact');?></td>
-				</tr>
-				
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('email');?></td>
-				</tr>
-
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('price');?></td>
-				</tr>
-				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('payment-desc');?></td>
-				</tr>
-			  </tbody>
-			</table>
-		</div>
-		
-		<!--?php setData('user_id'); setData('price'); setData('payment-desc'); setData('name'); setData('contact'); setData('unit_no'); setData('email'); ?>-->
-		<p style="position:absolute; left: 20%;"><?php echo $message; ?></p>
 	</div>
+		<?php setData('user_id'); setData('price'); setData('payment-desc'); setData('name'); setData('contact'); setData('unit_no'); setData('email'); ?>
+		<p style="position:absolute; left: 20%;"><?php echo $message; ?></p>
 	</body>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
