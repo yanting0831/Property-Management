@@ -78,7 +78,7 @@ docref.orderBy("time","desc").limit(5)
 			if(i == 5 || querysize < 5){
 				//insert send message box
 				chats = chats + `<div class='row'>
-						<div class='col-12'>
+						<div class='col-10'>
 						  <div class="chat-box-tray">
 							<i class="far fa-grin"></i>
 							<input type="text" placeholder="Type your message here..." id="message">
