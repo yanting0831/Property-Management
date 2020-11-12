@@ -75,7 +75,9 @@ async function createresident(username,idno,contacts,emails,units,role,carplates
 			unit: firebase.firestore.FieldValue.arrayUnion(units), 
 			role: role,
 			carplate: carplates,
-			landlords: landlordref
+			landlords: landlordref,
+			dateupdated: new Date(),
+			rmsg: ""
 			
 			}).then(()=>{
 				console.log("user created successfully");
