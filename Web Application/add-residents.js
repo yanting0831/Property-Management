@@ -83,7 +83,7 @@ async function createresident(username,idno,contacts,emails,units,role,carplates
 				console.log("user created successfully");
 				//re-enable fields
 				updatefields(false);
-				
+				alert("user created successfully");
 			}).catch(err => {
 				console.error("Error adding document: ", err);
 				alert(err);
@@ -92,7 +92,7 @@ async function createresident(username,idno,contacts,emails,units,role,carplates
 			});
 		}else{
 			console.log(result);
-			alert(result.data.message);
+			alert("User creation failed");
 			updatefields(false);
 		}
 		
