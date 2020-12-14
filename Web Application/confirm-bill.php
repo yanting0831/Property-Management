@@ -1,4 +1,7 @@
 <?php
+require 'vendor/autoload.php';
+
+use Konekt\PdfInvoice\InvoicePrinter;
 $message = "";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -7,25 +10,83 @@ use PHPMailer\PHPMailer\Exception;
 // Load Composer's autoloader
 require '../vendor/autoload.php';
 
-if(empty($_POST['price']) || empty($_POST['payment-desc']) || empty($_POST['user_id']) || empty($_POST['name']) || empty($_POST['unit_no']) || empty($_POST['contact']) || empty($_POST['email'])){
-	print_r($_POST);
+$timestamp = strtotime("now");
+
+if(isset($_POST['item0'])){
+	$item1=$_POST['item0'];
+}else
+	$item1="";
+	
+if(isset($_POST['item1'])){
+	$item2=$_POST['item1'];
+}else
+	$item2="";
+
+if(isset($_POST['item2'])){
+	$item3=$_POST['item2'];
+}else
+	$item3="";
+	
+if(isset($_POST['item3'])){
+	$item4=$_POST['item3'];
+}else
+	$item4="";
+	
+if(isset($_POST['item4'])){
+	$item5=$_POST['item4'];
+}else
+	$item5="";
+	
+	
+if(isset($_POST['ip0'])){
+	$price1=$_POST['ip0'];
+}else
+	$price1="";
+	
+if(isset($_POST['ip1'])){
+	$price2=$_POST['ip1'];
+}else
+	$price2="";
+	
+if(isset($_POST['ip2'])){
+	$price3=$_POST['ip2'];
+}else
+	$price3="";
+	
+if(isset($_POST['ip3'])){
+	$price4=$_POST['ip3'];
+}else
+	$price4="";
+	
+if(isset($_POST['ip4'])){
+	$price5=$_POST['ip4'];
+}else
+	$price5="";
+
+if(empty($_POST['user_id']) || empty($_POST['name']) || empty($_POST['unit_no']) || empty($_POST['contact']) || empty($_POST['email'])){
+	
 	function setData($data){}
+
 }
 else
 {
-	//initialize variables
-	$name = $_POST['name'];
-	$price = $_POST['price'];
-	$payment = $_POST['payment-desc'];
-	$unitno = $_POST['unit_no'];
-	$email = $_POST['email'];
-//	$contact = $_POST['contact'];
-	
 	function setData($data)
 	{
 		$value = $_POST["$data"];
-		echo "<input type='hidden' value='$value' id='$data' name='$data' />";
+		//echo "<input type='hidden' value='$value' id='$data' name='$data' />";
+		echo $value;
 	}
+	
+	chmod("bills/", 777);
+	
+	//initialize variables
+	$name = $_POST['name'];
+	$price = "test";
+	$payment = "8.00";
+	$unitno = $_POST['unit_no'];
+	$email = $_POST['email'];
+//	$contact = $_POST['contact'];
+	getinv($item1,$price1,$item2,$price2,$item3,$price3,$item4,$price4,$item5,$price5,$timestamp);
 	
 	if(isset($_POST['user_id'])){
 		$msg = "Hi $name, your bills for unit $unitno is now ready for payment";
@@ -54,7 +115,7 @@ else
 
 		$mail->Subject = 'Reminder for Bill';
 		$mail->Body    = $bodyContent;
-
+		$mail->AddAttachment(getcwd()."/bills/$timestamp.pdf", $name = "$timestamp",  $encoding = 'base64', $type = 'application/pdf');
 		if(!$mail->send()) {
 			$message = "Message could not be sent.<br>Mailer Error: " . $mail->ErrorInfo;
 		} else {
@@ -90,7 +151,41 @@ else
 	
 	
 }
+function getinv($desc1,$price1,$desc2,$price2,$desc3,$price3,$desc4,$price4,$desc5,$price5,$timestamp){
+	
 
+  $invoice = new InvoicePrinter();
+  
+  /* Header settings */
+  $invoice->setLogo("images/dryx-black.png");   //logo image path
+  $invoice->setColor("#007fff");      // pdf color scheme
+  $invoice->setType("Monthly Bill");    // Invoice Type
+  $invoice->setReference("INV-0000001");   // Reference
+  $invoice->setDate(date('M dS ,Y',time()));   //Billing Date
+  $invoice->setTime(date('h:i:s A',time()));   //Billing Time
+  $invoice->setDue(date('M dS ,Y',strtotime('+3 months')));    // Due Date
+  $invoice->setFrom(array("D'ryx Management Office","D'ryx Resident","Sunny Hill Garden","Kuching Sabah, 93250"));
+  $invoice->setTo(array("name","D'ryx Resident","Sunny Hill Garden","Kuching Sabah, 93250"));
+  
+  $invoice->addItem($desc1,"",1,0,floatval($price1),0,floatval($price1));
+  $invoice->addItem($desc2,"",1,0,floatval($price2),0,floatval($price2));
+  $invoice->addItem($desc3,"",1,0,floatval($price3),0,floatval($price3));
+  $invoice->addItem($desc4,"",1,0,floatval($price4),0,floatval($price4));
+  $invoice->addItem($desc5,"",1,0,floatval($price5),0,floatval($price5));
+  
+  $invoice->addTotal("Total",9460);
+  
+  //$invoice->addBadge("Payment Paid");
+  
+  //$invoice->addTitle("Important Notice");
+  
+  //$invoice->addParagraph("No item will be replaced or refunded if you don't have the invoice with you.");
+  
+  $invoice->setFooternote("D'ryx Residence");
+  
+  $invoice->render("bills/".$timestamp.".pdf","F");
+  
+}
 ?>
 <!doctype html>
 <html>
@@ -136,32 +231,32 @@ else
 				</tr>
 
 				<tr>
-					<td class="table-info">User ID</td>
+					<td class="table-info">Unit no</td>
 					<td><?php setData('unit_no');?></td>
 				</tr>
 				
 				<tr>
-					<td class="table-info">User ID</td>
+					<td class="table-info">Name</td>
 					<td><?php setData('name');?></td>
 				</tr>
 
 				<tr>
-					<td class="table-info">User ID</td>
+					<td class="table-info">Contact</td>
 					<td><?php setData('contact');?></td>
 				</tr>
 				
 				<tr>
-					<td class="table-info">User ID</td>
+					<td class="table-info">Email</td>
 					<td><?php setData('email');?></td>
 				</tr>
 
 				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('price');?></td>
+					<td class="table-info">Price</td>
+					<td>90.00</td>
 				</tr>
 				<tr>
-					<td class="table-info">User ID</td>
-					<td><?php setData('payment-desc');?></td>
+					<td class="table-info">Description</td>
+					<td>Payment Bill</td>
 				</tr>
 			  </tbody>
 			</table>

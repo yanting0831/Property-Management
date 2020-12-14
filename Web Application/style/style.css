@@ -440,7 +440,7 @@ td button{
 /*Update bill page*/
 .update-bill{
 	background: white;
-	z-index: 900;		
+	z-index: 1;		
 	position: relative;	
 }
 
@@ -668,7 +668,13 @@ input[name="searchbar"]{
 	font-size: 1.2vw !important;
 }
 
-
+/*invoice*/
+/*invoice*/
+#confirm_bill{
+	position: absolute;
+    width: 200px;
+    right: 0;
+}
 
 
 
