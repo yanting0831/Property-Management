@@ -20,7 +20,7 @@ const storage = firebase.storage();
 
 function credit_payment_function(){
 	var stripe = Stripe("pk_test_51HmpphAKsIRleTRbL8qxNUc97rkqnpYJRMpJ8JBry543rJ7PEXsv9vkr0JlqnjIK442Hb6c5IY7lcw7dall9vHs600xi3UqAyZ");
-
+	
 	var jsonString = {
 	  data: {
 		  currency: "myr",
@@ -124,6 +124,10 @@ function credit_payment_function(){
 		document.querySelector("#button-text").classList.remove("hidden");
 	  }
 	};
+	
+	$("#credit-payment-cancel-button").click(()=>{
+		window.location.href = "/home/";
+	});
 }
 
 document.querySelector("button").disabled = true;

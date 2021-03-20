@@ -25,7 +25,9 @@
   <button id="fpx-button">
     Submit Payment
   </button>
-
+  <button id="online-payment-cancel-button" style="margin-top:10px;background:#990000;">
+	Cancel
+  </button>
   <!-- Used to display form errors. -->
   <div id="error-message" role="alert"></div>
 </form>

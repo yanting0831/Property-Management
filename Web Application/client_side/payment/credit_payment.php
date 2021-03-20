@@ -16,6 +16,9 @@
 		<div class="spinner hidden" id="spinner"></div>
 		<span id="button-text">Pay</span>
 	</button>
+	<button id="credit-payment-cancel-button" style="margin-top:10px;">
+		Cancel
+	</button>
 	<p id="card-error" role="alert"></p>
 	<p class="result-message hidden">
 		Payment succeeded, see the result in your

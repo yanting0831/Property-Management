@@ -70,6 +70,10 @@ function online_payment_function(){
 			// ...
 		});
 	}
+	
+	$("#online-payment-cancel-button").click(()=>{
+		window.location.href = "/home/";
+	});
 
 	form.addEventListener('submit', function(event) {
 	  event.preventDefault();
@@ -78,7 +82,7 @@ function online_payment_function(){
 		payment_method: {
 		  fpx: fpxBank,
 		},
-		return_url: `${window.location.href}`,
+		return_url: "/online-payment-callback/",
 	  }).then((result) => {
 		if (result.error) {
 		  var errorElement = document.getElementById('error-message');
