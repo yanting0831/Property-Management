@@ -24,29 +24,6 @@ document.getElementById("image_url").addEventListener("change",function(){
 	}
 });
 
-db.collection("landlord").get().then((querySnapshot) => {
-	querySnapshot.forEach((doc) => {
-		if(doc.data().fmc_token != null){
-			var user_tokens = doc.data().fmc_token;
-							
-			tokens = tokens.concat(user_tokens);
-		}
-	});
-	
-	var annc_form = document.getElementById("annc-form");
-	for(var i =0 ; i < tokens.length; i++){
-		var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "tokens[]";
-		input.value = tokens[i];
-		annc_form.appendChild(input);
-		
-		//annc_form.innerHTML += `<input name="tokens[]" value="${tokens[i]}" type="hidden" id="tokens" >`;
-	}			
-	console.log(tokens);
-				
-});
-
 $("#annc-form").submit(function(event){
 	event.preventDefault();
 	
@@ -82,8 +59,21 @@ async function firebasedb(ann_title,ann_description,ann_imageurl,ann_date){
 		
 		announceref.put(blob).then(function(snapshot) {
 			console.log('Uploaded a blob or file!');
-			var annc_form = document.getElementById("annc-form");
-			annc_form.submit();
+			
+			
+			snapshot.ref.getDownloadURL().then(function(downloadURL) {
+				console.log("File available at", downloadURL);
+				var annc_form = document.getElementById("annc-form");
+				
+				var input = document.createElement("input");
+				input.type = "hidden";
+				input.name = "imageurl";
+				input.value = downloadURL;
+				annc_form.appendChild(input);
+				
+				annc_form.submit();
+			});
+			
 		});
 		
 	}).catch(function(error) {
