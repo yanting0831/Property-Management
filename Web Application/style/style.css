@@ -361,6 +361,12 @@ td input{
 	color: white;
 	cursor: pointer;
 }
+td input[type=number]{
+	
+	color: white;
+	cursor: pointer;
+}
+
 
 td button{
 	background-color: #dc3545;
