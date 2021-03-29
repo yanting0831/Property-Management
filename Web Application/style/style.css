@@ -454,6 +454,18 @@ td button{
 	left: 75%;
 	top: 13%;
 }
+#complete-button{
+	
+	background-color: #C8E0FF;
+	color: #5F6392;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	padding: 1% 2%;
+	
+	
+	
+}
 
 #done-button:hover{
 	cursor: pointer;
