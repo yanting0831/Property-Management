@@ -323,7 +323,7 @@ ul li:hover a{
 #resident-list, #payment-log, #visitor-log{
 	position: absolute;
 	width: 75%;
-	margin-top: 11%;
+	margin-top: 8%;
 	left: 22%;
 	right: 5%;
 }
@@ -651,6 +651,21 @@ input[name="searchbar"]{
 	font-size: 1.8vw;
 	color: maroon;
 }
+
+/*Content*/
+.content1{
+	background: white;
+	z-index: 900;		
+	position: relative;	
+}
+
+.content1 h1{
+	position: fixed;
+	color: #CCA679;	
+	top: 3%;
+	left: 22%;
+}
+
 
 .content .redirect{
 	left: 40%;
