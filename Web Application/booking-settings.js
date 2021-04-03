@@ -10,6 +10,7 @@ $(function() {
 		e.preventDefault();
 		
 		var limit = document.getElementById("limit").value;
+		var user_type = document.getElementById("user_type").value;
 		var facility = document.getElementById("facility").value;
 		
 		var timeslots = document.getElementsByClassName("timeslots");
@@ -24,6 +25,7 @@ $(function() {
 		
 		var start_date = start.format('MM-DD-YYYY');
 		var end_date = end.format('MM-DD-YYYY');
+		
 		
 		var now = new Date();
 		var daysOfYear = [];
@@ -43,7 +45,7 @@ $(function() {
 				disabled_time: timeslot_checked,
 				facility:"AV Room",
 				limit: limit,
-				users: "landlord"
+				users: user_type
 			}
 				
 			await disabled_dateRef.add(doc);
