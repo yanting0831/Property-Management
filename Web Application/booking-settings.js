@@ -36,13 +36,14 @@ $(function() {
 			var month = d.getMonth();
 			var day = String(d.getDate()).padStart(2, '0');
 			var year = d.getFullYear();
-			var date = day  + '-'+ month  + '-' + year;
+			var date =  month + '-'+ day  + '-' + year;
 			console.log("preparing docs");
 			doc = {
 				date: date,
 				disabled_time: timeslot_checked,
 				facility:"AV Room",
-				limit: limit
+				limit: limit,
+				users: "landlord"
 			}
 				
 			await disabled_dateRef.add(doc);
