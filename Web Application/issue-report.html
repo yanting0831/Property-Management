@@ -27,8 +27,8 @@
 		</ul>
 	</div>
 	
-	<div id="img-container" onclick="hide();" style="z-index:1000; background-color:#666666 ; height:100%; width:100%">
-		<img id="img-holder" style="max-width:1024px; max-height:720px; z-index:2000;"/>
+	<div id="img-container" onclick="hide();" style="display:none; position:absolute; text-align:center; z-index:1000; background: rgba(0, 0, 0, 0.7); height:100%; width:100%">
+		<img id="img-holder" style="height:auto;width:75%;max-height:540px; max-width:960px; z-index:2000; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
 	</div>
 	
 	<div class="content">
@@ -44,6 +44,8 @@
 					<th>Block Number</th>
 					<th>Image</th>
 					<th>Description</th>
+					<th>Status</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			
