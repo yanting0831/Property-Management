@@ -14,6 +14,8 @@ function get_data(){
 			var img_path = "issues/" + doc.data().img;
 			var issue_status = "Not Solved"; 
 			var action_button = '<button type="button" onclick="solve(\''+doc.id+'\');">Mark as Solved</button>';
+			var datetime = new Date(doc.data().date.toDate());
+			datetime = datetime.format("yyyy/mm/dd HH:MM:ss");
 			
 			if(doc.data().status != undefined)
 				issue_status = doc.data().status;
@@ -21,10 +23,12 @@ function get_data(){
 			if(issue_status == "Solved")
 				action_button = '<button type="button" onclick="unsolve(\''+doc.id+'\');">Mark as Unsolved</button>';
 			
+			t.order( [ 0, 'desc' ] );
+			
 			storage.ref().child(img_path).getDownloadURL().then(function(url) {
 				var image_link = '<button class="image_link" type="button" onclick="show_img(\''+url+'\');">Show</button>';
 				t.row.add([
-					doc.data().date.toDate().toLocaleString(),
+					datetime,
 					doc.data().name,
 					doc.data().pno,
 					doc.data().email,
@@ -36,7 +40,7 @@ function get_data(){
 				]).draw();
 			}).catch((err) => {
 				t.row.add([
-					doc.data().date.toDate().toLocaleString(),
+					datetime,
 					doc.data().name,
 					doc.data().pno,
 					doc.data().email,
