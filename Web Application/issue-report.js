@@ -7,6 +7,7 @@ var t = $('#issue-report').DataTable({
 
 var issuesDoc = db.collection("issues");
 
+/* Get data from Firebase */
 function get_data(){
 	issuesDoc.get().then((querySnapshot) => {
 		querySnapshot.forEach((doc) => {
@@ -52,6 +53,7 @@ function get_data(){
 	});
 }
 
+/* Show Image */
 function show_img(url){
 	var img_container = document.getElementById("img-container");
 	var img_holder = document.getElementById("img-holder");
@@ -59,11 +61,13 @@ function show_img(url){
 	img_container.style.display = "Block";
 }
 
+/* Hide Image */
 function hide(){
 	var img_container = document.getElementById("img-container");
 	img_container.style.display = "None";
 }
 
+/* Mark Current Row as Solved */
 function solve(id){
 	issuesDoc.doc(id).update({ status: "Solved" }).then(() => {
 		t.clear();
@@ -71,6 +75,7 @@ function solve(id){
 	});
 }
 
+/* Mark Current Row as Unsolved */
 function unsolve(id){
 	issuesDoc.doc(id).update({ status: "Not Solved" }).then(() => {
 		t.clear();
