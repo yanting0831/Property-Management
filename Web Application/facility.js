@@ -13,6 +13,7 @@ function createGraph(){
 			date = date.split("-");
 			let month = "";
 			
+			/* Get Date from String */
 			switch(date[1]){
 				case "January":
 				case "1":
@@ -118,6 +119,7 @@ function createGraph(){
 				pushDate();
 			}
 			
+			/* Create Key-Value Pairs | Key: Date | Value: Number of Bookings */
 			if(keyname in list && facility in list[keyname])
 				list[keyname][facility] += 1;
 			else{
@@ -128,8 +130,6 @@ function createGraph(){
 		});
 		
 		date_list.sort();
-		
-		console.log(date_list);
 		
 		return [date_list,list];
 	}).then((list) => {
@@ -146,7 +146,7 @@ function createGraph(){
 				if(!(facilities[i] in facility_data))
 					facility_data[facilities[i]] = 0;
 			}
-		
+			
 			data[key] = facility_data;
 		}
 		
@@ -158,6 +158,7 @@ function createGraph(){
 		let dataset = [];
 		let label = [];
 		
+		/* Loop through all dates in the list */
 		for(var j in date_list){
 			for (var key in sorted_data) {
 				let date = key;
@@ -178,6 +179,7 @@ function createGraph(){
 			}
 		}
 		
+		/* Convert Date to Graph Label */
 		for(var i = 0; i < label.length; i++){
 			let year = label[i].split("/");
 			let month = "";
@@ -226,12 +228,13 @@ function createGraph(){
 			label[i] = label_name;
 		}
 		
-		/* Put Data into Graph */
+		/* Initialize Graph Variables */
 		var bar_data = [];
 		var color_list = ["rgba(255, 0, 0, 0.5)","rgba(0, 255, 0, 0.5)","rgba(0, 0, 255, 0.5)","rgba(255, 255, 0, 0.5)","rgba(255, 0, 255, 0.5)","rgba(0, 255, 255, 0.5)","rgba(128, 128, 128, 0.5)"];
 		var bordercolor_list = ["rgba(255, 0, 0, 1)","rgba(0, 255, 0, 1)","rgba(0, 0, 255, 1)","rgba(255, 255, 0, 1)","rgba(255, 0, 255, 1)","rgba(0, 255, 255, 1)","rgba(128, 128, 128, 1)"];
 		var count = 0;
 		
+		/* Put Data into Graph Variables */
 		for (var key in dataset) {
 			var facility_name = key;
 			var data = dataset[key];
@@ -244,6 +247,7 @@ function createGraph(){
 			labels: label,
 		};
 		
+		/* Set Graph */
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: datasets,
