@@ -1,22 +1,12 @@
-/* Random Generate Colours */
-function colorize(opaque) {
-  return (ctx) => {
-    var v = ctx.parsed.y;
-    var c = v < -50 ? '#D60000'
-      : v < 0 ? '#F46300'
-      : v < 50 ? '#0358B6'
-      : '#44DE28';
-
-    return opaque ? c : Utils.transparentize(c, 1 - Math.abs(v / 150));
-  };
-}
-console.log(Chart.defaults);
 function createGraph(){
 	var ctx = document.getElementById('myChart').getContext('2d');
+	var min = "2021/03";
+	var max = "2022/02"
 	
 	/* Get All Booking Details */
 	db.collection("booking").get().then((querySnapshot) => {
 		let list = [];
+		let date_list = [];
 		querySnapshot.forEach((doc) => {
 			let facility = doc.data().facility;
 			let date = doc.data().date;
@@ -85,6 +75,49 @@ function createGraph(){
 			
 			var keyname = date[2] + "/" + month;
 			
+			/* Push Date */
+			function pushDate(){
+				if(!date_list.includes(keyname))
+					date_list.push(keyname);
+			}
+			
+			/* Min Max Date Filter */
+			if(min != "" || max != ""){
+				let min_date = min.split("/");
+				let min_month = min_date[1];
+				let min_year = min_date[0];
+				let max_date = max.split("/");
+				let max_month = max_date[1];
+				let max_year = max_date[0];
+				
+				/* Both input not empty */
+				if(min != "" && max != ""){
+					if(max_year > date[2] && min_year < date[2]){
+						pushDate();
+					}
+					else if((max_year == date[2] && max_month >= month) || (min_year == date[2] && min_month <= month)){
+						pushDate();
+					}
+				}
+				/* Only Max input empty */
+				if(max == ""){
+					if(min_year <= date[2]){
+						if(min_month <= month)
+							pushDate();
+					}
+				}
+				/* Only Min input empty */
+				else if(min == ""){
+					if(max_year >= date[2]){
+						if(max_month >= month)
+							pushDate();
+					}
+				}
+			}
+			else{
+				pushDate();
+			}
+			
 			if(keyname in list && facility in list[keyname])
 				list[keyname][facility] += 1;
 			else{
@@ -93,15 +126,20 @@ function createGraph(){
 				list[keyname][facility] = 1;
 			}	
 		});
-		list.sort();
 		
-		return list;
-	}).then((data) => {
+		date_list.sort();
+		
+		console.log(date_list);
+		
+		return [date_list,list];
+	}).then((list) => {
+		var data = list[1];
+		
 		/* TODO: Get All Facilities */
 		let facilities = ["BBQ Pit","AV Room","Sauna","Sky Lounge","Gym"];
 		
-		for (const [key, value] of Object.entries(data)) {
-			let facility_data = value;
+		for (var key in data) {
+			let facility_data = data[key];
 			
 			/* Set 0 if no data for certain facilities */
 			for (var i = 0; i < facilities.length; i++) {
@@ -112,28 +150,33 @@ function createGraph(){
 			data[key] = facility_data;
 		}
 		
-		return [facilities,data];
+		return [facilities,data,list[0]];
 	}).then((data) => {
 		let facilities = data[0];
+		let sorted_data = data[1];
+		let date_list = data[2];
 		let dataset = [];
 		let label = [];
 		
-		for (const [key, value] of Object.entries(data[1])) {
-			let date = key;
-			let facility_data = value;
-			
-			if(!label.includes(key))
-				label.push(key);
-			
-			/* Get Values from all facilities */
-			for (var i = 0; i < facilities.length; i++) {
-				if(!(facilities[i] in dataset))
-					dataset[facilities[i]] = [];
-				dataset[facilities[i]].push(facility_data[facilities[i]]);
+		for(var j in date_list){
+			for (var key in sorted_data) {
+				let date = key;
+				let facility_data = sorted_data[key];
+				
+				/* Push oldest data first */
+				if(date == date_list[j]){
+					if(!label.includes(key))
+						label.push(key);
+					
+					/* Get Values from all facilities */
+					for (var i = 0; i < facilities.length; i++) {
+						if(!(facilities[i] in dataset))
+							dataset[facilities[i]] = [];
+						dataset[facilities[i]].push(facility_data[facilities[i]]);
+					}
+				}
 			}
 		}
-		
-		label.sort();
 		
 		for(var i = 0; i < label.length; i++){
 			let year = label[i].split("/");
@@ -186,23 +229,20 @@ function createGraph(){
 		/* Put Data into Graph */
 		var bar_data = [];
 		var color_list = ["rgba(255, 0, 0, 0.5)","rgba(0, 255, 0, 0.5)","rgba(0, 0, 255, 0.5)","rgba(255, 255, 0, 0.5)","rgba(255, 0, 255, 0.5)","rgba(0, 255, 255, 0.5)","rgba(128, 128, 128, 0.5)"];
+		var bordercolor_list = ["rgba(255, 0, 0, 1)","rgba(0, 255, 0, 1)","rgba(0, 0, 255, 1)","rgba(255, 255, 0, 1)","rgba(255, 0, 255, 1)","rgba(0, 255, 255, 1)","rgba(128, 128, 128, 1)"];
 		var count = 0;
 		
-		for (const [key, value] of Object.entries(dataset)) {
+		for (var key in dataset) {
 			var facility_name = key;
-			var data = value;
-			bar_data.push({ label: facility_name, data: data, backgroundColor: color_list[count] });
+			var data = dataset[key];
+			bar_data.push({ label: facility_name, data: data, backgroundColor: color_list[count], borderColor: bordercolor_list[count] });
 			count++;
 		}
-		
-		console.log(bar_data);
 		
 		var datasets = {
 			datasets: bar_data,
 			labels: label,
 		};
-		
-		console.log(datasets);
 		
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -216,7 +256,6 @@ function createGraph(){
 			}
 		});
 		
-		console.log(myChart);
 	}).catch((err) => {
 		console.log(err);
 	});
