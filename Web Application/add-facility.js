@@ -47,15 +47,15 @@ document.getElementById('facility_form').addEventListener("submit", function(e){
 
 async function createfacility(FTitle,FimageUrl){
 	
-	await db.collection("facility").add({
+	await db.collection("config").doc('facilities').collection('facilities_list').add({
 
-    title: FTitle,
-	imageurl: FimageUrl,
+    name: FTitle,
+	img: FimageUrl,
 		
 	}).then(async function(docRef) {
 		console.log("Document written with ID: ", docRef.id);
 		console.log(blob);
-		var facilityref = storage.ref().child("Facility/"+url);
+		var facilityref = storage.ref().child("facilities/"+url);
 		
 		facilityref.put(blob).then(function(snapshot) {
 			console.log('Uploaded a blob or file!');

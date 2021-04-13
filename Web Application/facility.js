@@ -275,7 +275,7 @@ var t = $('#resident-list').DataTable({
 					info: false,
 					"sDom": '<"top"i>rt<"bottom"flp><"clear">'
 				});	
-db.collection("facility").get().then((querySnapshot) => {
+db.collection("config").doc('facilities').collection('facilities_list').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 		var button = '';
 		console.log(button);
@@ -315,7 +315,7 @@ async function deleteUser(ele_id){
 }
 
 async function deleteRecords(id){
-	var p1 = db.collection("facility").doc(id).delete().then(function() {
+	var p1 = db.collection("config").doc('facilities').collection('facilities_list').doc(id).delete().then(function() {
 		console.log("Document successfully deleted!");
 	}).catch(function(error) {
 		console.error("Error removing document: ", error);
