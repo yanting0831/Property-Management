@@ -280,7 +280,7 @@ db.collection("config").doc('facilities').collection('facilities_list').get().th
 		var button = '';
 		console.log(button);
 		t.row.add( [
-            doc.data().title,
+            doc.data().name,
 			`<button id='${doc.id}'type="button" class='deleteuser'>Delete</button>`,
 			button
         ] ).draw( );
