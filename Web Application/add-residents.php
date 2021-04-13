@@ -61,6 +61,7 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 					<select onChange="addTenants()" class="form-control" id="resident-type">
 						<option value="landlord">Landlord</option>
 						<option value="tenant" <?php echo $selected; echo $disabled;?>>Tenant</option>
+						<option value="household">HouseHold</option>
 					</select>
 				</div>
 				
@@ -77,8 +78,14 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 				</div>
 				
 				<div id="have-tenant" class="col-md-4 mb-4 px-4" style="display:none;">
-					<label for="tenant">landlord</label>
+					<label for="tenant">landlord</label	>
 					<div class="tenant">							
+						<input id="yes-button" type="text" name="radAnswer" class="gender" <?php echo "value='$name'"?> disabled>		
+					</div>
+				</div>
+				<div id="have-household" class="col-md-4 mb-4 px-4" style="display:none;">
+					<label for="household">landlord/Tenant</label	>
+					<div class="household">							
 						<input id="yes-button" type="text" name="radAnswer" class="gender" <?php echo "value='$name'"?> disabled>		
 					</div>
 				</div>
@@ -175,6 +182,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 		carplates.remove();
 	}
 </script>
+
 <script src="add-residents.js"></script>
 
 </body>
