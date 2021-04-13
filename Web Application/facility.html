@@ -30,12 +30,23 @@
 	
 	<div class="content">
 		<h1>Facility</h1>
-		<div style="margin:0 auto; width:580px; height: 290px;">
+		
+		<table id="resident-list" class="table hover order-column">
+		<div  style="margin:0 auto; width:580px; height: 290px;">
 			<canvas id="myChart" width="580" height="290"></canvas>
-		</div>
+		</div>	
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>		
+		</table>
 			
 	</div>
+	
 </body>
+
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
