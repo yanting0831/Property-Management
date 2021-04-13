@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Booking Log - Project Management System</title>
+	<title>Payment Log - Project Management System</title>
 	<link rel="stylesheet" href="style/style.css"/>
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -13,34 +13,22 @@
 </head>
 
 <body>
-	<div class="sidebar">
-		<header><img src="images/dryx-black.png" alt="dryx-logo" width="50%"></header>
-		<ul>
-			<li><a href="residents.html"><i class="fas fa-user-friends"></i>Residents</a></li>
-			<li><a href="livechat.html"><i class="fas fa-comment-dots"></i>Live Chat</a></li>
-			<li><a href="update-bill.html"><i class="fas fa-bolt"></i>Update bill</a></li>
-			<li><a href="payment-log.html"><i class="fas fa-money-bill-alt"></i>Payment Log</a></li>
-			<li><a href="visitor-log.html"><i class="fas fa-address-card"></i>Visitor Log</a></li>
-			<li><a href="announcement.html"><i class="fas fa-bell"></i>Announcements</a></li>
-			<li><a href="bookings.html"><i class="fas fa-building"></i>Facility bookings</a></li>
-			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-		</ul>
-	</div>
+	<?php
+		include "navbar.php";
+	?>
 	
 	<div class="content">
-		<h1>Booking Log</h1>
+		<h1>Payment Log</h1>
 		
-		<table id="bookings" class="table hover order-column">
+		<table id="payment-log" class="table hover order-column">
 			<thead>
 				<tr>
 					<th>User Name</th>
 					<th>Email</th>
-					<th>Unit</th>
 					<th>Contact No.</th>
-					<th>Facility</th>
-					<th>Booking Date</th>
-					<th>Time</th>
-					<th>Duration</th>
+					<th>Unit number</th>
+					<th>Amount</th>					
+					<th>Status</th>
 				</tr>
 			</thead>
 			
@@ -52,7 +40,8 @@
 			<nav>
 				<ul class="pagination"></ul>
 			</nav>
-		</div>		
+		</div>
+			
 	</div>
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
@@ -64,6 +53,6 @@
 <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-functions.js"></script>
 <script src="firebase.js"></script>
 <script src="auth(logged in).js"></script>
-<script src="booking.js"></script>
+<script src="payment.js"></script>
 </body>
 </html>

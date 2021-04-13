@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Issue Report - Project Management System</title>
+	<title>Visitor Log - Project Management System</title>
 	<link rel="stylesheet" href="style/style.css"/>
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -13,40 +13,23 @@
 </head>
 
 <body>
-	<div class="sidebar">
-		<header><img src="images/dryx-black.png" alt="dryx-logo" width="50%"></header>
-		<ul>
-			<li><a href="residents.html"><i class="fas fa-user-friends"></i>Residents</a></li>
-			<li><a href="livechat.html"><i class="fas fa-comment-dots"></i>Live Chat</a></li>
-			<li><a href="update-bill.html"><i class="fas fa-bolt"></i>Update bill</a></li>
-			<li><a href="payment-log.html"><i class="fas fa-money-bill-alt"></i>Payment Log</a></li>
-			<li><a href="visitor-log.html"><i class="fas fa-address-card"></i>Visitor Log</a></li>
-			<li><a href="announcement.html"><i class="fas fa-bell"></i>Announcements</a></li>
-			<li><a href="bookings.html"><i class="fas fa-building"></i>Facility bookings</a></li>
-			<li><a href="login.html" id="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-		</ul>
-	</div>
-	
-	<!-- Image Pop Up Container -->
-	<div id="img-container" onclick="hide();" style="display:none; position:absolute; text-align:center; z-index:1000; background: rgba(0, 0, 0, 0.7); height:100%; width:100%">
-		<img id="img-holder" style="height:auto;width:75%;max-height:540px; max-width:960px; z-index:2000; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
-	</div>
+	<?php
+		include "navbar.php";
+	?>
 	
 	<div class="content">
-		<h1>Issue Report</h1>
+		<h1>Visitor Log</h1>
 		
-		<table id="issue-report" class="table hover order-column">
+		<table id="visitor-log" class="table hover order-column">
 			<thead>
 				<tr>
-					<th>Date</th>
-					<th>Name</th>
-					<th>Phone Number</th>
-					<th>Email</th>
-					<th>Block Number</th>
-					<th>Image</th>
-					<th>Description</th>
+					<th>Resident Name</th>
+					<th>Identification No.</th>
+					<th>Contact No.</th>
+					<th>Carplate</th>
+					<th>Check-In Time</th>
+					<th>Check-Out Time</th>
 					<th>Status</th>
-					<th>Action</th>
 				</tr>
 			</thead>
 			
@@ -74,6 +57,5 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
 <script src="firebase.js"></script>
 <script src="auth(logged in).js"></script>
-<script src="date.format.js"></script>
-<script src="issue-report.js"></script>
+<script src="visitor-log.js"></script>
 </html>
