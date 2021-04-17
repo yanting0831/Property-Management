@@ -12,7 +12,7 @@ body{
 /*Side menu*/
 .sidebar{
 	position: fixed;
-	width: 280px;
+	width: 35vh;
 	height: 100%;
 	background: #C8E0FF;
 	transition: 0.5s;
@@ -294,33 +294,27 @@ ul li:hover a{
 }
 
 /* Add residents page */
-
-
-/* Add residents & Create admin button */
-#add-residents, #create-admin{
-	display: inline;
-	position: fixed;	
+#add-residents, #create-admin{	
 	background-color: #C8E0FF;
 	color: #5F6392;	
 	border-radius: 5px;
 	padding: 1% 2%;
 	text-decoration: none;
 	font-size: 1.2vw;
-	top: 13%;
+	margin: 3px;
+}
+
+.buttons{
+	display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: flex-end;
 }
 
 #add-residents:hover, #create-admin:hover{
 	background: #7278B9;
 	color: #CCA679;
 	transition: 0.5s;
-}
-
-#add-residents{
-	left: 22%;
-}
-
-#create-admin{
-	left: 36%;
 }
 
 /* Resident List , Payment Log, Visitor Log, Issue Report */
@@ -384,6 +378,10 @@ td button{
 }
 
 /* Data Tables */
+.dataTables_wrapper{
+	height: 7vh;
+}
+
 .dataTables_paginate {	
 	color: #cca679 !important;
 	padding: 0 !important;
@@ -406,7 +404,7 @@ td button{
 	width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .dataTables_length{
@@ -424,10 +422,10 @@ td button{
 /*Content*/
 .content{
 	position: absolute;
-	width: calc(100% - 280px);
-	left: 280px;
+	width: calc(100% - 35vh);
+	left: 35vh;
 	min-height: 100vh;
-	background: #f5f5f5;
+	background: #f2faff;
 	transition: 0.5s;
 }
 
@@ -438,23 +436,13 @@ td button{
 	text-align: left;
 }
 
-/* .content form{
-	position: fixed;
-	top: 23%;
-	left: 21%;
-	width: 70%;
-}
 
-#done-button{
-	position: fixed;	
+#done-button{	
 	background-color: #C8E0FF;
 	color: #5F6392;
-	font-weight: bold;
 	border: none;
 	border-radius: 5px;
 	padding: 1% 2%;
-	left: 75%;
-	top: 13%;
 }
 
 #complete-button{
@@ -467,7 +455,7 @@ td button{
 
 #done-button:hover{
 	cursor: pointer;
-} */
+}
 
 
 /*Update bill page*/
@@ -507,10 +495,6 @@ td button{
 	cursor: pointer;
 }
 
-#confirm-password{
-	margin-bottom: 10%;
-}
-
 /* Create admin button */
 .create-admin{
 	background: white;
@@ -533,17 +517,18 @@ td button{
 }
 
 #create-button{
-	position: fixed;	
 	background-color: #C8E0FF;
 	color: #5F6392;
 	border: none;
 	border-radius: 5px;
 	padding: 1% 2%;
-	font-weight: bold;
-	left: 75%;
-	top: 13%;	
 	font-family: 'Nunito', sans-serif;
 	font-size: 1.2vw;
+}
+
+/*admin only features*/
+#create-admin{
+	display:none;
 }
 
 #create-button:hover{
@@ -702,10 +687,7 @@ input[name="searchbar"]{
 	color: maroon;
 }	
 
-/*admin only features*/
-#create-admin{
-	display:none;
-}
+
 
 .btn-primary{
 	background-color: #C8E0FF !important;
