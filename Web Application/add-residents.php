@@ -39,19 +39,21 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 	
 	<div class="content">
 		<h1 class="page-title" id="test">Residents</h1>
-		<a id ="add-residents" href="add-residents.php" ><i class="fas fa-plus"></i>  Add Residents</a>
-		<a id ="create-admin" href="create-admin.php" ><i class="fas fa-plus"></i>  Create Admin</a>
+		<div class="buttons">
+			<a id ="add-residents" href="add-residents.php" ><i class="fas fa-plus"></i>  Add Residents</a>
+			<a id ="create-admin" href="create-admin.php" ><i class="fas fa-plus"></i>  Create Admin</a>
+		</div>
 		
-		<form action="" method="post" class="mt-0 col-md-10" id="add-resident-form">
+		<form action="" method="post" class="mt-0 ml-5 col-md-11" id="add-resident-form">
 			<?php echo $element;?>
 			
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="resident-type">Resident Type</label>
 					<select onChange="addTenants()" class="form-control" id="resident-type">
-						<option value="landlord">Landlord</option>
-						<option value="tenant" <?php echo $selected; echo $disabled;?>>Tenant</option>
-						<option value="household">HouseHold</option>
+						<option value="tenant" <?php echo $disabled;?>selected>Tenant</option>	
+						<option value="landlord">Landlord</option>						
+						<option value="household">Household</option>
 					</select>
 				</div>
 				
@@ -68,15 +70,15 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 				</div>
 				
 				<div id="have-tenant" class="col-md-4 mb-4 px-4" style="display:none;">
-					<label for="tenant">landlord</label	>
+					<label for="tenant">Landlord</label	>
 					<div class="tenant">							
-						<input id="yes-button" type="text" name="radAnswer" class="gender" <?php echo "value='$name'"?> disabled>		
+						<input id="yes-button" type="text" name="radAnswer" class="form-control gender" <?php echo "value='$name'"?> disabled>		
 					</div>
 				</div>
 				<div id="have-household" class="col-md-4 mb-4 px-4" style="display:none;">
-					<label for="household">landlord/Tenant</label	>
+					<label for="household">Landlord/Tenant</label	>
 					<div class="household">							
-						<input id="yes-button" type="text" name="radAnswer" class="gender" <?php echo "value='$name'"?> disabled>		
+						<input id="yes-button" type="text" name="radAnswer" class="form-control gender" <?php echo "value='$name'"?> disabled>		
 					</div>
 				</div>
 			</div>
@@ -84,7 +86,7 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="icnumber">Identificaton No.</label>
-					<input type="text" id="idno" class="form-control" placeholder="e.g. XXXXX-XX-XXXX" required>
+					<input type="text" id="idno" class="form-control" placeholder="e.g. 12345-13-1234" required>
 				</div>
 			
 				<div class="col-md-4 mb-4 px-4">
@@ -101,7 +103,7 @@ if(isset($_POST['id']) && isset($_POST['name'])){
 
 				</div>
 				
-				<div class="col-md-4 mb-4 px-4" id="carplates">
+				<div class="col-md-5 mb-4 px-4" id="carplates">
 					<label for="carplate-no">Carplate No.</label>
 					<div class="form-inline">
 						<input type="text" id="carplate-number" class="form-control mr-1" placeholder="QAA123" required>
