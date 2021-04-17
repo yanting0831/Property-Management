@@ -8,36 +8,37 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-	<!-- Place required backend part is fill with #-->
+<body>	
 	<?php
 		include "navbar.php";
 	?>
 	
-	<div class="create-admin">
+	<div class="content">
 		<h1 class="page-title">Residents</h1>
-		<a id ="add-residents" href="add-residents.php" ><i class="fas fa-plus"></i>  Add Residents</a>
-		<a id ="create-admin" href="create-admin.html" ><i class="fas fa-plus"></i>  Create Admin</a>
+		<div class="buttons">
+			<a id ="add-residents" href="add-residents.php" ><i class="fas fa-plus"></i>  Add Residents</a>
+			<a id ="create-admin" href="create-admin.php" ><i class="fas fa-plus"></i>  Create Admin</a>
+		</div>
 		
-		<form action="" method="post" class="mt-0 col-md-10" id="add-resident-form">
+		<form action="" method="post" class="mt-0 ml-5 col-md-11" id="add-resident-form">
 			<div class="form-row">
-				<div class="col-md-4 mb-4">
+				<div class="col-md-4 mb-2">
 					<label for="email" >Email</label>
-					<input type="text" id="email" class="form-control" pattern="^[^ ]+@[^ ]+\.[a-z]{2,6}$" placeholder="john@hotmail.com" required>
+					<input type="text" id="email" class="form-control bg-white" pattern="^[^ ]+@[^ ]+\.[a-z]{2,6}$" placeholder="john@hotmail.com" required>
 				</div>
 			</div>
 
 			<div class="form-row">
-				<div class="col-md-4 mb-4">
+				<div class="col-md-4 mb-2">
 					<label for="password">Password</label>
-					<input type="password" id="password" class="form-control" required>		
+					<input type="password" id="password" class="form-control bg-white" required>		
 				</div>
 			</div>
 			
 			<div id="confirm-password" class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="confirm-password">Confirm Password</label>
-					<input type="password" name="confirmPassword" class="form-control" id="cpassword" required>		
+					<input type="password" name="confirmPassword" class="form-control bg-white" id="cpassword" required>		
 				</div>
 			</div>
 				
