@@ -33,8 +33,8 @@ else{
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<style type="text/css">
-<!--
+	<!-- <style type="text/css">
+
 span.cls_002{font-family:Arial,serif;font-size:20.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
 div.cls_002{font-family:Arial,serif;font-size:20.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
 span.cls_003{font-family:Arial,serif;font-size:9.1px;color:rgb(0,126,255);font-weight:bold;font-style:normal;text-decoration: none}
@@ -53,8 +53,8 @@ span.cls_009{font-family:Arial,serif;font-size:8.1px;color:rgb(49,49,49);font-we
 div.cls_009{font-family:Arial,serif;font-size:8.1px;color:rgb(49,49,49);font-weight:bold;font-style:normal;text-decoration: none}
 span.cls_010{font-family:Arial,serif;font-size:8.1px;color:rgb(49,49,49);font-weight:normal;font-style:normal;text-decoration: none}
 div.cls_010{font-family:Arial,serif;font-size:8.1px;color:rgb(49,49,49);font-weight:normal;font-style:normal;text-decoration: none}
--->
-</style>
+
+</style> -->
 <script type="text/javascript" src="inv_files/wz_jsgraphics.js"></script>
 </head>
 
