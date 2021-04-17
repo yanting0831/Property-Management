@@ -282,6 +282,7 @@ db.collection("config").doc('facilities').collection('facilities_list').get().th
 		t.row.add( [
             doc.data().name,
 			`<button id='${doc.id}'type="button" class='deleteuser'>Delete</button>`,
+			
 			button
         ] ).draw( );
     });
