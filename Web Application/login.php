@@ -22,7 +22,7 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="images/dryx-black.png" id="icon" alt="User Icon" />
+      <img src="images/dryx-logo.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
