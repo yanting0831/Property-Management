@@ -124,7 +124,7 @@ div.cls_010{font-family:Arial,serif;font-size:8.1px;color:rgb(49,49,49);font-wei
 					<input type="text" name="unit_no" id="unit_no" class="form-control" <?php setValue($_POST['unit']); ?> placeholder="B-8-1" required <?php disable(); ?> />
 				</div>	
 			</div>
-			<input type="submit" value="Generate Invoice" id="generate_inv"/>
+			<input type="submit" class="form-control col-8" value="Generate Invoice" id="generate_inv"/>
 				
 			
 			<!--<button action="confirm_bill.php" id="update-button" type="submit" value="Update" name="update"><i class="fas fa-check"></i> Update</button>-->				
