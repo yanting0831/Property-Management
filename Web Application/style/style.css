@@ -294,7 +294,7 @@ ul li:hover a{
 }
 
 /* Add residents page */
-#add-residents, #create-admin{	
+#add-residents, #create-admin, #display-chart, #generate_inv{	
 	background-color: #C8E0FF;
 	color: #5F6392;	
 	border-radius: 5px;
@@ -302,6 +302,15 @@ ul li:hover a{
 	text-decoration: none;
 	font-size: 1.2vw;
 	margin: 3px;
+	cursor: pointer;
+}
+
+.display-chart-button{
+	display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: flex-start;
+	cursor: pointer;
 }
 
 .buttons{
@@ -331,15 +340,15 @@ th{
 }
 
 td{
-	font-size: 0.8vw;
+	font-size: 0.9vw;
 	padding: 2%;
 	border-bottom: 1px solid #7278B9!important;
 }
 
 td input, td button{
 	border: none;
-	border-radius: 5px;
-	padding: 10%;
+    border-radius: 8px;
+    padding: 5%;
 }
 
 td input{
@@ -562,14 +571,11 @@ td button{
 
 /* Live Chat */
 .user-list{
-	width: 80%;
-	margin-left: 20%;
-	margin-right: auto;
+	width: calc(100% - 35vh);
 }
 
 #searchbar{
 	color: #e3e3e3;
-	margin: 1% 0 0 2%;
 }
 
 input[name="searchbar"]{
@@ -616,11 +622,6 @@ input[name="searchbar"]{
 }
 
 /*Announcement php */
-.content img{
-	position: fixed;
-	top: 10%;
-	left: 55%;
-}
 
 .content .announcement-sent{
 	top: 25%;
