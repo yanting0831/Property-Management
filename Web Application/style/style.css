@@ -1,5 +1,5 @@
 body{	
-	font-family: 'Roboto', sans-serif;
+	font-family: "Nunito", sans-serif; 
 }
 
 *{
@@ -336,7 +336,7 @@ ul li:hover a{
 th{
 	font-size: 1vw;
 	background-color: #C8E0FF!important;
-	font-family: "Nunito", sans-serif; 
+	
 }
 
 td{
@@ -356,6 +356,7 @@ td input{
 	color: white;
 	cursor: pointer;
 }
+
 .limit_slot input, .limit_slot input[type=number]
 {
 	
@@ -416,9 +417,7 @@ td button{
     justify-content: space-between;
 }
 
-.dataTables_length{
-	display: none;
-}
+
 
 /* Update bill */
 #update-bill-table{

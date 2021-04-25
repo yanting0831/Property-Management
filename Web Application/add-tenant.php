@@ -51,8 +51,6 @@
 				</div>
 			</div>
 			
-			
-
 			<div class="form-row">
 				<div class="col-md-4 mb-4">
 					<label for="cntno">Contact no.</label>
